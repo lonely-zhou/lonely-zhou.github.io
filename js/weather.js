@@ -1,0 +1,21 @@
+WIDGET = {
+  CONFIG: {
+    modules: "0124",
+    background: "5",
+    tmpColor: "000000",
+    tmpSize: "16",
+    cityColor: "000000",
+    citySize: "16",
+    aqiColor: "000000",
+    aqiSize: "16",
+    weatherIconSize: "24",
+    alertIconSize: "18",
+    padding: "10px 10px 10px 10px",
+    shadow: "0",
+    language: "auto",
+    fixed: "false",
+    vertical: "top",
+    horizontal: "left",
+    key: "8e98ddbb52e74ff9aa0ee7a3234bbda2",
+  },
+};
