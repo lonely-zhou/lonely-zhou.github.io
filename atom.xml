@@ -6,7 +6,7 @@
   <link href="https://note.lonelyzhou.cn/atom.xml" rel="self"/>
   
   <link href="https://note.lonelyzhou.cn/"/>
-  <updated>2023-11-27T09:35:16.874Z</updated>
+  <updated>2023-12-15T08:18:54.650Z</updated>
   <id>https://note.lonelyzhou.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win 终端保持心跳</title>
+    <link href="https://note.lonelyzhou.cn/note/594bbb3a.html"/>
+    <id>https://note.lonelyzhou.cn/note/594bbb3a.html</id>
+    <published>2023-12-15T08:18:54.650Z</published>
+    <updated>2023-12-15T08:18:54.650Z</updated>
+    
+    <content type="html"><![CDATA[<p>.ssh 目录新建文件config</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    ServerAliveInterval 40</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;.ssh 目录新建文件config&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>maven打包</title>
