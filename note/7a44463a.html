@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>openwrt | 有木兮丶</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=3.0.19"><!-- inject head--><link rel="canonical" href="https://blog.lonelyzhou.top/note/7a44463a.html"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="换源123456789101112131415161718# openwrt 官方源src&amp;#x2F;gz openwrt_core https:&amp;#x2F;&amp;#x2F;downloads.openwrt.org&amp;#x2F;releases&amp;#x2F;23.05.3&amp;#x2F;targets&amp;#x2F;x86&amp;#x2F;64&amp;#x2F;packagessrc&amp;#x2F;gz openwrt_bas"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="有木兮丶"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/favicon.ico"><link rel="apple-touch-icon" href="/img/favicon.ico" sizes="180x180"><script>console.log(' %c Solitude %c ' + '3.0.19' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script>let mdate = "7-7,9-18,12-13";
+mdate = (mdate.split(","));
+let ndate = new Date();
+for (let i of mdate) {
+    if (i === (ndate.getMonth()+1) + "-" + (ndate.getDate())) {
+        document.documentElement.classList.add('memorial');
+    }
+}
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+            },
+            diffDateFormat: (selector) => {
+                selector.forEach(item => {
+                    const date = new Date(item.getAttribute('datetime') || item.textContent);
+                    item.textContent = (date.getMonth() + 1).toString()+'/'+date.getDate().toString();
+                });
+            },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":true,"path":"/search.xml"},
+    runtime: '2020-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        state: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        witty_words: ["你可以的","你一定可以的","祝你好运，陌生人"],
+        witty_comment: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: false,
+    lightbox: 'null',
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fas fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>全部文章</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>全部标签</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="card-tag-cloud"><a href="/tags/Java/">Java<sup>1</sup></a><a href="/tags/%E5%AE%89%E5%8D%93/">安卓<sup>1</sup></a><a href="/tags/magisk/">magisk<sup>1</sup></a><a href="/tags/apatch/">apatch<sup>1</sup></a><a href="/tags/Python/">Python<sup>1</sup></a><a href="/tags/%E8%BE%93%E5%85%A5%E6%B3%95/">输入法<sup>1</sup></a><a href="/tags/docker/">docker<sup>1</sup></a><a href="/tags/wopi/">wopi<sup>1</sup></a><a href="/tags/collabora/">collabora<sup>1</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题<sup>1</sup></a><a href="/tags/java/">java<sup>1</sup></a><a href="/tags/maven/">maven<sup>1</sup></a><a href="/tags/SpringCloud/">SpringCloud<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">d.zhou</span><i class="solitude fas fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">openwrt</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>全部文章</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>全部标签</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fas fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fas fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fas fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/../img/openwrt/openwrt.png" alt="openwrt"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><div class="tag_share"><div class="post-meta__tag-list"></div></div></div></div><h1 class="post-title">openwrt</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2024-11-07 00:00:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2024-11-06T16:00:00.000Z">2024-11-06T16:00:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2025-09-02 17:52:04"><i class="post-meta-icon solitude fas fa-arrows-rotate"></i><time datetime="2025-09-02T09:52:04.046Z">2025-09-02T09:52:04.046Z</time></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openwrt 官方源</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_core</span> <span class="string">https://downloads.openwrt.org/releases/23.05.3/targets/x86/64/packages</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_base</span> <span class="string">https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/base</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_luci</span> <span class="string">https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/luci</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_packages</span> <span class="string">https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/packages</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_routing</span> <span class="string">https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/routing</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_telephony</span> <span class="string">https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/telephony</span></span><br><span class="line"><span class="comment"># 清华源</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_core</span> <span class="string">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/targets/x86/64/packages</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_base</span> <span class="string">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/base</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_luci</span> <span class="string">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/luci</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_packages</span> <span class="string">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/packages</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_routing</span> <span class="string">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/routing</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">openwrt_telephony</span> <span class="string">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/telephony</span></span><br><span class="line"><span class="comment"># kenzok8</span></span><br><span class="line"><span class="string">src/gz</span> <span class="string">kenzok8</span> <span class="string">https://op.dllkids.xyz/packages/x86_64</span></span><br><span class="line"><span class="comment"># 中科大</span></span><br><span class="line"><span class="string">sed</span> <span class="string">-i</span> <span class="string">&#x27;s/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g&#x27;</span> <span class="string">/etc/opkg/distfeeds.conf</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="module-‘luci-cbi’-not-found"><a href="#module-‘luci-cbi’-not-found" class="headerlink" title="module ‘luci.cbi’ not found"></a>module ‘luci.cbi’ not found</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install luci luci-base luci-compat</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩容空间"><a href="#扩容空间" class="headerlink" title="扩容空间"></a>扩容空间</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cfdisk /dev/nvme0n1</span><br><span class="line">mkfs.ext4 /dev/nvme0n1p3</span><br><span class="line">/dev/sda3</span><br><span class="line">opkg install block-mount</span><br><span class="line"></span><br><span class="line">mkdir -p /tmp/introot</span><br><span class="line">mkdir -p /tmp/extroot</span><br><span class="line">mount --bind / /tmp/introot</span><br><span class="line">mount /dev/sda3 /tmp/extroot</span><br><span class="line">tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -</span><br><span class="line">umount /tmp/introot</span><br><span class="line">umount /tmp/extroot</span><br></pre></td></tr></table></figure>
+
+<h2 id="no-field-package-preload-‘luci-cbi’"><a href="#no-field-package-preload-‘luci-cbi’" class="headerlink" title="no field package.preload[‘luci.cbi’]"></a>no field package.preload[‘luci.cbi’]</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install luci luci-base luci-compat</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><div class="post-copyright__author_img"><img class="post-copyright__author_img_front" src="https://img.lonelyzhou.top/img/m1000x1000.JPEG"></div><div class="post-copyright__author_name">有木兮丶</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="social-share"><div class="social-share-ico icon-link" onclick="utils.copy(&quot;https://blog.lonelyzhou.top/note/7a44463a.html&quot;)" title="复制文章链接"><i class="solitude fas fa-link"></i></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">有木兮丶</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/note/7be7930f.html"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ubuntu</div></div></a></div><div class="next-post pull-right"><a href="/note/ef0dfae5.html"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">pve</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="top-group"><div class="sayhi" id="sayhi" onclick="sco.changeWittyWord()"></div></div></div><div class="avatar"><img alt="头像" src="https://img.lonelyzhou.top/img/m1000x1000.JPEG"></div><div class="description"></div><div class="bottom-group"><span class="left"><div class="name">有木兮丶</div><div class="desc">世上本无事，庸人自扰之 / There is nothing in the world, and the trouble is self-inflicted.</div></span><div class="social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/lonely-zhou" title="Github"><i class="solitude  fab fa-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fas fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-text">换源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#module-%E2%80%98luci-cbi%E2%80%99-not-found"><span class="toc-text">module ‘luci.cbi’ not found</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E7%A9%BA%E9%97%B4"><span class="toc-text">扩容空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#no-field-package-preload-%E2%80%98luci-cbi%E2%80%99"><span class="toc-text">no field package.preload[‘luci.cbi’]</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fas fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/note/ea538f2a.html" title="Java基础语法"><div class="thumbnail"><img alt="Java基础语法" src="https://img.lonelyzhou.top/img/blog/java基础语法.png"></div><div class="content"><span class="title" href="/note/ea538f2a.html" title="Java基础语法">Java基础语法</span><span class="categories" href="/note/ea538f2a.html">编程</span></div></a><a class="aside-list-item" href="/note/3feb0aba.html" title="Magisk 安装"><div class="thumbnail"><img alt="Magisk 安装" src="/../img/magisk/magisk.png"></div><div class="content"><span class="title" href="/note/3feb0aba.html" title="Magisk 安装">Magisk 安装</span><span class="categories" href="/note/3feb0aba.html">安卓</span></div></a><a class="aside-list-item" href="/note/a378bd8e.html" title="Python"><div class="thumbnail"><img alt="Python" src="/img/python/Python.png"></div><div class="content"><span class="title" href="/note/a378bd8e.html" title="Python">Python</span><span class="categories" href="/note/a378bd8e.html">编程</span></div></a><a class="aside-list-item" href="/note/e5a64255.html" title="docker collabora online + wopi"><div class="content"><span class="title" href="/note/e5a64255.html" title="docker collabora online + wopi">docker collabora online + wopi</span><span class="categories" href="/note/e5a64255.html">编程</span></div></a><a class="aside-list-item" href="/note/8fe2b04b.html" title="java 面试题整理"><div class="thumbnail"><img alt="java 面试题整理" src="/../img/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86.png"></div><div class="content"><span class="title" href="/note/8fe2b04b.html" title="java 面试题整理">java 面试题整理</span><span class="categories" href="/note/8fe2b04b.html">java</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2020 - 2025 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/favicon.ico">有木兮丶</a></div><div class="beian-group"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referral" title="提供加速服务"><img class="beian-icon" src="/img/%E5%8F%88%E6%8B%8D%E4%BA%91_logo4.png" alt="提供加速服务"><span class="beian-name">提供加速服务</span></a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://hexo.io/">框架：Hexo</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude">主题：Solitude</a></div></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=3.0.19"></script><script src="/js/main.js?v=3.0.19"></script><script src="/js/third_party/waterfall.min.js?v=3.0.19"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/tw_cn.js?v=3.0.19"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script src="https://fastly.jsdelivr.net/npm/colorthief@2.6.0/dist/color-thief.min.js"></script><script src="/js/covercolor/local.js?v=3.0.19"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fas fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=3.0.19"></script><!-- music--></body></html>
+        <script>
+            const posts = ["note/ea538f2a.html","note/3feb0aba.html","note/a378bd8e.html","note/e5a64255.html","note/8fe2b04b.html","note/780af030.html","note/2428cc0.html","note/3ed94a36.html","note/53d0684b.html","note/7df1138c.html","note/7be7930f.html","note/7a44463a.html","note/ef0dfae5.html","note/1569dc91.html","note/cc70b376.html","note/882edeea.html","note/a802f1a7.html"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>

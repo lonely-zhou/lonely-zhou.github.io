@@ -1,0 +1,437 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>vue笔记 | 有木兮丶</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=3.0.19"><!-- inject head--><link rel="canonical" href="https://blog.lonelyzhou.top/note/882edeea.html"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="第一章 Vue核心 第二章 Vue组件化编程 第三章 使用Vue脚手架 第四章 Vue中的ajax 第五章 vuex 第七章 Vue UI组件库 第六章 vue-router 脚手架文件结构：（markdown编写文件目录）12345678910111213141516|-- node_module"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="有木兮丶"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/favicon.ico"><link rel="apple-touch-icon" href="/img/favicon.ico" sizes="180x180"><script>console.log(' %c Solitude %c ' + '3.0.19' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script>let mdate = "7-7,9-18,12-13";
+mdate = (mdate.split(","));
+let ndate = new Date();
+for (let i of mdate) {
+    if (i === (ndate.getMonth()+1) + "-" + (ndate.getDate())) {
+        document.documentElement.classList.add('memorial');
+    }
+}
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+            },
+            diffDateFormat: (selector) => {
+                selector.forEach(item => {
+                    const date = new Date(item.getAttribute('datetime') || item.textContent);
+                    item.textContent = (date.getMonth() + 1).toString()+'/'+date.getDate().toString();
+                });
+            },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":true,"path":"/search.xml"},
+    runtime: '2020-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        state: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        witty_words: ["你可以的","你一定可以的","祝你好运，陌生人"],
+        witty_comment: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: false,
+    lightbox: 'null',
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fas fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>全部文章</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>全部标签</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="card-tag-cloud"><a href="/tags/Java/">Java<sup>1</sup></a><a href="/tags/%E5%AE%89%E5%8D%93/">安卓<sup>1</sup></a><a href="/tags/magisk/">magisk<sup>1</sup></a><a href="/tags/apatch/">apatch<sup>1</sup></a><a href="/tags/Python/">Python<sup>1</sup></a><a href="/tags/%E8%BE%93%E5%85%A5%E6%B3%95/">输入法<sup>1</sup></a><a href="/tags/docker/">docker<sup>1</sup></a><a href="/tags/wopi/">wopi<sup>1</sup></a><a href="/tags/collabora/">collabora<sup>1</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题<sup>1</sup></a><a href="/tags/java/">java<sup>1</sup></a><a href="/tags/maven/">maven<sup>1</sup></a><a href="/tags/SpringCloud/">SpringCloud<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">d.zhou</span><i class="solitude fas fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">vue笔记</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>全部文章</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>全部标签</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fas fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fas fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fas fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/img/vue%E7%AC%94%E8%AE%B0/logo.png" alt="vue笔记"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><div class="tag_share"><div class="post-meta__tag-list"></div></div></div></div><h1 class="post-title">vue笔记</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2024-11-07 00:00:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2024-11-06T16:00:00.000Z">2024-11-06T16:00:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2025-09-02 17:52:04"><i class="post-meta-icon solitude fas fa-arrows-rotate"></i><time datetime="2025-09-02T09:52:04.046Z">2025-09-02T09:52:04.046Z</time></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><p>第一章 Vue核心</p>
+<p>第二章 Vue组件化编程</p>
+<p>第三章 使用Vue脚手架</p>
+<p>第四章 Vue中的ajax</p>
+<p>第五章 vuex</p>
+<p>第七章 Vue UI组件库</p>
+<p>第六章 vue-router</p>
+<h2 id="脚手架文件结构：（markdown编写文件目录）"><a href="#脚手架文件结构：（markdown编写文件目录）" class="headerlink" title="脚手架文件结构：（markdown编写文件目录）"></a>脚手架文件结构：（markdown编写文件目录）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">|-- node_modules</span><br><span class="line">|-- public</span><br><span class="line">        |-- favicon.ico： 页签图标</span><br><span class="line">        |-- index.html：  主页面</span><br><span class="line">|-- src</span><br><span class="line">    |-- assets： 存放静态资源</span><br><span class="line">    |   |-- logo.png</span><br><span class="line">    |-- components: 存放组件</span><br><span class="line">    |   |-- HelloWorld.vue</span><br><span class="line">    |-- App.vue:  汇总所有组件</span><br><span class="line">    |-- main.js:  入口文件</span><br><span class="line">|-- .gitignore: git版本管制忽略的配置</span><br><span class="line">|-- babel.config.js： babel的配置文件</span><br><span class="line">|-- package.json：  应用包配置文件</span><br><span class="line">|-- README.md：  应用描述文件</span><br><span class="line">|-- package-lock.json  包版本控制文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于不同版本的Vue："><a href="#关于不同版本的Vue：" class="headerlink" title="关于不同版本的Vue："></a>关于不同版本的Vue：</h2><pre><code>1.vue.js与vue.runtime.xx.js的区别
+    (1).vue.js是完整版的Vue，包含：核心功能+模板解析器
+    (2).vue.runtime.xx.js 是运行版的vue，只包含：核心功能，没有模板解析器
+2.因为vue.runtime.xxx.js没有模板解析器，所以不能使用template配置项，需要使用
+  render函数收到的createElement 去指定具体内容
+</code></pre>
+<h2 id="vue-config-js配置文件"><a href="#vue-config-js配置文件" class="headerlink" title="vue.config.js配置文件"></a>vue.config.js配置文件</h2><blockquote>
+<p>使用vue inspect &gt; output.js可以查看到Vue脚手架的默认配置<br>使用vue.config.js可以对脚手架进行个性化定制，详情： <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/config/#lintonsave">https://cli.vuejs.org/zh/config/#lintonsave</a></p>
+</blockquote>
+<h2 id="ref属性"><a href="#ref属性" class="headerlink" title="ref属性"></a>ref属性</h2><pre><code>1.被用来给元素或子组件注册引用信息（id的替代者）
+2.应用在html标签上获取的是真实的DOM元素，应用在组件标签上是组件实例对象（vc）
+3.使用方式：
+    打标识： &lt;h1 ref=&quot;xxx&quot;&gt;...&lt;/h1&gt;  或 &lt;School ref=&quot;xxx&quot;/&gt;
+    获取： this.$refs.xxx
+</code></pre>
+<h2 id="配置项props"><a href="#配置项props" class="headerlink" title="配置项props"></a>配置项props</h2><pre><code>功能：让组件接收外部传过来的数据(props传来的优先级高于默认)
+     默认值优先级高 ，与props同名时会提示报错修改默认值name
+(1). 传递数据：
+      &lt;Demo name=&quot;xxx&quot; /&gt;
+(2). 接收数据：
+     第一种方式（只接收）：
+        props:[&#39;name&#39;]
+     第二种方式（限制类型）：
+     props:&#123;
+        name:String
+     &#125;
+     第三种方式（限制类型、限制必要性、指定默认值）：
+     props:&#123;
+        name:&#123;
+            type:String,//类型
+            required:true,//必要性
+            default:&#39;老王&#39; //默认值
+        &#125;
+     &#125;
+父组件传子组件 父组件传来的不允许改变 ，非要改在子组件 通过data 增加一个中间属性
+（如果子组件是传来的年龄属性 加1 记得v-bind: 单项绑定）
+备注：props是只读的，Vue底层会检测你对props的修改，如果进行了修改，就会发出警告，
+     若业务需求确实需要修改，那么请复制props的内容到data中一份 ,
+
+       data() &#123;
+            return &#123;
+                myAge:this.age
+             &#125;
+        &#125;
+
+
+     然后去修改data中的数据myAge
+</code></pre>
+<h2 id="mixin-混入"><a href="#mixin-混入" class="headerlink" title="mixin(混入)"></a>mixin(混入)</h2><pre><code>功能：可以把多个组件共用的配置提取成一个混入对象
+使用方式：
+    第一步定义混合，例如：
+        export const a = &#123;
+            data()&#123;...&#125;,
+            methods:&#123;...&#125;
+            ...
+
+        &#125;
+    第二步使用混入，例如：
+       (1).全局混入：Vue.mixin(xxx)
+       (2).局部混入：mixins:[&#39;xxx&#39;]
+</code></pre>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>功能：用于增强Vue<br>本质：包含install方法的一个对象MyPlugin，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。</p>
+<pre><code>      定义插件：
+      对象.install = function (Vue,options)&#123;
+      //1.添加全局过滤器
+      Vue.filter(..)
+
+      //2.添加全局指令
+      Vue.directive(..)
+      //3.配合全局混入（合）
+      Vue.mixin(..)
+
+      //4.添加实例方法
+      Vue.prototype.$myMethod = function () &#123;...&#125;
+      Vue.prototype.$myProperty = xxx
+    &#125;
+  使用插件： Vue.use()
+</code></pre>
+<h2 id="Vue运行顺序（解析顺序）"><a href="#Vue运行顺序（解析顺序）" class="headerlink" title="Vue运行顺序（解析顺序）"></a>Vue运行顺序（解析顺序）</h2><p>1.先引入js 2.读取配置项 3.解析模板</p>
+<h2 id="scoped-样式"><a href="#scoped-样式" class="headerlink" title="scoped 样式"></a>scoped 样式</h2><p>作用：让样式在局部生效，防止冲突<br>写法: <style scoped></style></p>
+<h2 id="总结TodoList案例"><a href="#总结TodoList案例" class="headerlink" title="总结TodoList案例"></a>总结TodoList案例</h2><ol>
+<li><p>组件化编码流程：<br>(1).拆分静态组件：组件要按照功能点拆分，命名不要与html元素冲突<br>(2).实现动态组件：考虑好数据的存放位置，数据是一个组件再用，还是一些组件在用：</p>
+<p> 1).一个组件在用：放在组件自身即可<br>     2).一些组件再用：放在他们共同的父组件上，（<span style="color:red">状态提升</span>）</p>
+<p> (3).实现交互：从绑定事件开始</p>
+</li>
+<li><p>props适用于：<br>(1) .父组件 &#x3D;&#x3D;&gt; 子组件通信</p>
+<p> (2). 子组件 &#x3D;&#x3D;&gt; 父组件通信 （要求父先给字一个函数）</p>
+</li>
+<li><p>使用v-model时要切记： v-model绑定的值不能是props传过来的值，因为props是不可以修改的！</p>
+</li>
+<li><p>props传过来的若是对象类型的值，修改对象中的属性时Vue不会报错，但不推荐这样做</p>
+</li>
+</ol>
+<h2 id="webStorage"><a href="#webStorage" class="headerlink" title="webStorage"></a>webStorage</h2><p>1.存储内容大小一般支持5MB左右（不同浏览器可能还不一样）</p>
+<p>2.浏览器端通过 window.sessionStorage和window.localStorage属性来实现本地存储机制.</p>
+<p>3.相关API:</p>
+<ol>
+<li>xxxStorage.setItem(‘key’,’value’);</li>
+</ol>
+<p>该方法接受一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值。</p>
+<p>2.xxxStorage.getItem(‘person’);</p>
+<p>该方法接收一个键名作为参数，返回键名对应的值。</p>
+<p>3.xxxStorage.removeItem(‘person’);</p>
+<p>该方法接收一个键名作为参数，并把该键名从存储中删除。</p>
+<ol start="4">
+<li>xxxStorage.clear()</li>
+</ol>
+<p>该方法会清空存储中的所有数据</p>
+<ol start="4">
+<li><p>备注</p>
+<ol>
+<li>SessionStorage存储的内容会随着浏览器窗口关闭而消失</li>
+<li>LocalStorage存储的内容,需要手动清除才会消失</li>
+<li>xxxStorage.getItem(xxx)如果xxx对应的value获取不到，那么getItem的返回值是null</li>
+<li>JSON.parse(null)的结果依然是null</li>
+</ol>
+</li>
+</ol>
+<h2 id="组件的自定义事件"><a href="#组件的自定义事件" class="headerlink" title="组件的自定义事件"></a>组件的自定义事件</h2><ol>
+<li><p>一种组件间的方式，适用于： <span style="color:red">子组件 &#x3D;&#x3D;&gt; 父组件</span></p>
+</li>
+<li><p>使用场景：A是父组件，B是子组件，B想给A传数据，那么就要在A中给B绑定自定义事件 （<span style="color:red">事件的回调在A中</span>）</p>
+</li>
+<li><p>绑定自定义事件：</p>
+<p> 1.第一种，在父组件中：<code>&lt;Demo @mxh=&quot;test&quot; /&gt;  </code> 或<code>&lt;Demo v-on:mxh=&quot;test&quot; /&gt;</code></p>
+<p> 2.第二种，在父组件中：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Demo ref=&quot;demo&quot;/&gt;</span><br><span class="line"></span><br><span class="line">.....</span><br><span class="line"></span><br><span class="line">mounted()&#123;</span><br><span class="line"></span><br><span class="line">this.$refs.demo.$on(&#x27;mxh&#x27;,this.test)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 3.若想让自定义事件只能触发一次，可以使用1中用 once修饰符，2中用$once方法</p>
+</li>
+<li><p>触发自定义事件：<code>this.$emit(&#39;mxh&#39;,数据)</code></p>
+</li>
+<li><p>解绑自定义事件：<code>this.$off(&#39;mxh&#39;)</code></p>
+</li>
+<li><p>组件上也可以绑定原生DOM事件，需要使用native修饰符<br><code> &lt;Student @click.native=&quot;show&quot;/&gt;</code></p>
+</li>
+<li><p>注意：通过<code>this.$refs.xxx.$on(&#39;mxh&#39;,回调)</code>绑定自定义事件时，回调要么配置在methods中，要么用箭头函数，否则this指向会出问题！</p>
+</li>
+</ol>
+<h2 id="全局事件总线（GlobalEventBus）【本质是组件自定义事件】"><a href="#全局事件总线（GlobalEventBus）【本质是组件自定义事件】" class="headerlink" title="全局事件总线（GlobalEventBus）【本质是组件自定义事件】"></a>全局事件总线（GlobalEventBus）【本质是组件自定义事件】</h2><h4 id="1-一种组件间通信的方式，适用于-任意组件间通信"><a href="#1-一种组件间通信的方式，适用于-任意组件间通信" class="headerlink" title="1.一种组件间通信的方式，适用于 任意组件间通信."></a>1.一种组件间通信的方式，适用于 <span style="color:red">任意组件间通信</span>.</h4><h4 id="2-在main-js-安装全局事件总线："><a href="#2-在main-js-安装全局事件总线：" class="headerlink" title="2.在main.js 安装全局事件总线："></a>2.在main.js 安装全局事件总线：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">...</span><br><span class="line">    <span class="title function_">beforeCreate</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$bus</span> = <span class="variable language_">this</span> <span class="comment">//安装全局事件总线，$bus就是当前应用的vm</span></span><br><span class="line">    &#125;</span><br><span class="line">...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-使用事件总线："><a href="#3-使用事件总线：" class="headerlink" title="3.使用事件总线："></a>3.使用事件总线：</h4><p>1.接收数据：A组件想接收数据，则在A组件中给$bus绑定自定义事件，事件的<span style="color:red">回调留在A组件自身</span>。<code>定义this.$bus.$on和this.$bus.$off</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">    <span class="title function_">demo</span>(<span class="params">data</span>)&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$bus</span>.$on(<span class="string">&#x27;xxx&#x27;</span>,<span class="variable language_">this</span>.<span class="property">demo</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">beforeDestroy</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$bus</span>.$off(<span class="string">&#x27;xxx&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.提供（发送）数据：<code>定义this.$bus.$emit(&#39;xxx&#39;,数据)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">sendStudentName</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$bus</span>.$emit(<span class="string">&#x27;xxx&#x27;</span>,<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-最好在beforeDestroy勾子中，用-off去解绑-当前组件所用到的事件。"><a href="#4-最好在beforeDestroy勾子中，用-off去解绑-当前组件所用到的事件。" class="headerlink" title="4.最好在beforeDestroy勾子中，用$off去解绑 当前组件所用到的事件。"></a>4.最好在beforeDestroy勾子中，用$off去解绑 <span style="color:red">当前组件所用到的</span>事件。</h4><p>解绑      <code> this.$bus.$off(&#39;xxx&#39;)</code></p>
+<h2 id="消息订阅与发布（pubsub）"><a href="#消息订阅与发布（pubsub）" class="headerlink" title="消息订阅与发布（pubsub）"></a>消息订阅与发布（pubsub）</h2><h4 id="1-一种组件间通信方式，适用于-任意组件间通信"><a href="#1-一种组件间通信方式，适用于-任意组件间通信" class="headerlink" title="1.一种组件间通信方式，适用于 任意组件间通信."></a>1.一种组件间通信方式，适用于 <span style="color:red">任意组件间通信</span>.</h4><h4 id="2-使用步骤："><a href="#2-使用步骤：" class="headerlink" title="2.使用步骤："></a>2.使用步骤：</h4><p>1.安装pubsub：<code>npm i pubsub-js</code></p>
+<p>2.引入：<code>import pubsub from &#39;pubsub-js&#39;</code></p>
+<p>3.订阅消息（接收数据）：A组件想接收数据，则在A组件中订阅消息，订阅的<span style="color:red">回调留在A组件自身。</span></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">methods</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">demo</span>(<span class="params">data</span>)&#123;...&#125;</span><br><span class="line">&#125;</span><br><span class="line">.....</span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pid</span> = pubsub.<span class="title function_">subscribe</span>(<span class="string">&#x27;xx消息名&#x27;</span>,<span class="variable language_">this</span>.<span class="property">demo</span>)<span class="comment">//订阅消息</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">beforeDestroy</span>(<span class="params"></span>) &#123;</span><br><span class="line">    pubsub.<span class="title function_">unsubscribe</span>(pid)<span class="comment">//取消订阅</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.发布消息（提供数据）：<code>pubsub.publish(&#39;xxx消息名&#39;,数据)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">methods</span>:&#123;</span><br><span class="line">     <span class="title function_">sendStudentName</span>(<span class="params"></span>)&#123;</span><br><span class="line">       pubsub.<span class="title function_">publish</span>(<span class="string">&#x27;xxx消息名字&#x27;</span>,<span class="string">&#x27;666&#x27;</span>)<span class="comment">//发布消息名</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.最好在beforeDestroy勾子中，用pubsub.unsubscribe(pid) 去 <span style="color:red">取消订阅</span>.</p>
+<h2 id="nextTick-重要！！！！！"><a href="#nextTick-重要！！！！！" class="headerlink" title="nextTick 重要！！！！！"></a>nextTick 重要！！！！！</h2><p>1.语法：<code>this.$nextTick(回调函数)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">       type=<span class="string">&quot;text&quot;</span></span><br><span class="line">       v-show=<span class="string">&quot;todo.isEdit&quot;</span></span><br><span class="line">       :value=<span class="string">&quot;todo.title&quot;</span></span><br><span class="line">       @blur=<span class="string">&quot;handleBlur(todo, $event)&quot;</span></span><br><span class="line">       ref=<span class="string">&quot;inputTitle&quot;</span></span><br><span class="line"> /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  方法名() &#123;</span><br><span class="line"></span><br><span class="line">     <span class="variable language_">this</span>.$nextTick(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">       <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">inputTitle</span>.<span class="title function_">focus</span>();</span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.作用：在下一次DOM更新结束后执行其指定的回调</p>
+<p>3.什么时候用：当改变数据后，要基于更新后的DOM进行某些操作时【新输入框获取焦点】，要在nextTick所指定的回调函数中执行。</p>
+<h2 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h2><p>1.作用：让父组件可以向子组件指定位置插入html结构，也是一种组件间通信的方式，适用于<span style="color:red">父组件&#x3D;&#x3D;&#x3D;&gt;子组件</span>。</p>
+<p>2.分类：默认插槽、具名插槽、作用域插槽</p>
+<p>3.使用方式：</p>
+<h4 id="1-默认插槽"><a href="#1-默认插槽" class="headerlink" title="1.默认插槽"></a>1.默认插槽</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">父组件中：</span><br><span class="line">        &lt;Category&gt;</span><br><span class="line">              &lt;div&gt; html结构1 &lt;/div&gt;</span><br><span class="line">       &lt;/Category&gt;</span><br><span class="line">子组件中：</span><br><span class="line">       &lt;template&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">           &lt;!-- 定义插槽 --&gt;</span><br><span class="line">                 &lt;slot&gt;插槽默认内容&lt;/slot&gt;</span><br><span class="line">             &lt;/div&gt;</span><br><span class="line">       &lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-具名插槽"><a href="#2-具名插槽" class="headerlink" title="2.具名插槽"></a>2.具名插槽</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">父组件中</span><br><span class="line">    &lt;Category&gt;</span><br><span class="line">       &lt;template slot=&quot;center&quot;&gt;</span><br><span class="line">              &lt;div&gt; html结构1 &lt;/div&gt;</span><br><span class="line">       &lt;/template&gt;</span><br><span class="line">      &lt;template v-slot:&quot;footer&quot;&gt;</span><br><span class="line">              &lt;div&gt; html结构2 &lt;/div&gt;</span><br><span class="line">       &lt;/template&gt;</span><br><span class="line">   &lt;/Category&gt;</span><br><span class="line">子组件中</span><br><span class="line">   &lt;template&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">           &lt;!-- 定义插槽 --&gt;</span><br><span class="line">          &lt;slot name=&quot;center&quot;&gt;插槽默认内容。。&lt;/slot&gt;</span><br><span class="line">          &lt;slot name=&quot;footer&quot;&gt;插槽默认内容。。&lt;/slot&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">   &lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-作用域插槽"><a href="#3-作用域插槽" class="headerlink" title="3. 作用域插槽"></a>3. 作用域插槽</h4><p>1.理解：数组在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</p>
+<p>（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定)             2.具体编码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">父组件中</span><br><span class="line"> &lt;Category &gt;</span><br><span class="line">      &lt;template scope=&quot;mxh&quot;&gt;</span><br><span class="line">        &lt;!-- 生成ul列表 --&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">          &lt;li v-for=&quot;(item, index) in mxh.games&quot; :key=&quot;index&quot;&gt;&#123;&#123; item &#125;&#125;&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">  &lt;/Category&gt;</span><br><span class="line"></span><br><span class="line">   &lt;Category &gt;</span><br><span class="line">      &lt;template slot-scope=&quot;&#123;games&#125;&quot;&gt; &lt;!-- 解构赋值 --&gt;</span><br><span class="line">         &lt;!-- 生成ul列表 --&gt;</span><br><span class="line">        &lt;h4 v-for=&quot;(item, index) in games&quot; :key=&quot;index&quot;&gt;&#123;&#123; item &#125;&#125;&lt;/h4&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">    &lt;/Category&gt;</span><br><span class="line"></span><br><span class="line">子组件中</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;!-- 定义一个插槽(挖个坑，等着组件的使用者进行填充) --&gt;</span><br><span class="line">   &lt;slot :games=&quot;games&quot; &gt;我是默认的一些内容&lt;/slot&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;Category&quot;,</span><br><span class="line">  props:[&#x27;title&#x27;],</span><br><span class="line"> //数据在子组件自身</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      games: [&quot;红色警戒&quot;, &quot;超级玛丽&quot;, &quot;飞车&quot;, &quot;选五&quot;],</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><h4 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h4><p>在Vue中实现集中式状态（数据）管理的一个Vue插件，对Vue应用中多个组件的共享状态进行集中式的管理（读&#x2F;写），也是一种组件间通信的方式，且适用于任意组件间通信。</p>
+<h4 id="2-何时使用？"><a href="#2-何时使用？" class="headerlink" title="2. 何时使用？"></a>2. 何时使用？</h4><p>多个组件需要共享数据时</p>
+<h4 id="3-搭建vuex环境"><a href="#3-搭建vuex环境" class="headerlink" title="3. 搭建vuex环境"></a>3. 搭建vuex环境</h4><ol>
+<li><code>npm i vuex </code> 注意！！！【vue2 是vuex3 ，vue3是vuex4】</li>
+</ol>
+<p><code>安装指定版本 npm i vuex@3</code></p>
+<p>2.创建文件：<code>src/store/index.js</code></p>
+<pre><code>//引入Vue核心库
+import Vue from &#39;vue&#39;
+//引入Vuex
+import Vuex from &#39;vuex&#39;
+//应用Vuex插件
+Vue.use(Vuex)
+
+//准备actions——用于响应组件中的动作
+const actions = &#123;&#125;
+//准备mutation——用于操作数据(state)
+const mutations = &#123;&#125;
+//准备state——用于存储数据
+const state = &#123;&#125;
+
+//创建store并暴露（导出）store
+export default new Vuex.Store(&#123;
+   actions,
+   mutations,
+   state,
+
+&#125;)
+</code></pre>
+<p>3.在main.js中创建vm时传入store配置项</p>
+<p>注意！！！main.js 执行顺序会先执行import 引入 ，在执行console.log等，和代码顺序无关</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line">//引入store</span><br><span class="line">impor store from &#x27;./store&#x27;</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">//创建vm</span><br><span class="line"> new Vue(&#123;</span><br><span class="line">    el:&#x27;#app&#x27;,</span><br><span class="line">    render: h =&gt; h(App),</span><br><span class="line">    store,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-基本使用"><a href="#4-基本使用" class="headerlink" title="4. 基本使用"></a>4. 基本使用</h4><p>1.初始化数据、配置actions、配置mutations，操作文件index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入Vue核心库</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="comment">//引入Vuex</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vuex</span> <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">//应用Vuex插件</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Vuex</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//准备actions——用于响应组件中的动作</span></span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">    <span class="comment">//响应组件中加的动作</span></span><br><span class="line">    <span class="title function_">jia</span>(<span class="params">context, value</span>) &#123;</span><br><span class="line">        <span class="comment">// console.log(&#x27;actions中的jia被调用了&#x27;,context,value);</span></span><br><span class="line">        context.<span class="title function_">commit</span>(<span class="string">&#x27;JIA&#x27;</span>, value)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//准备mutation——用于操作数据(state)</span></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">    <span class="comment">//执行加</span></span><br><span class="line">    <span class="title function_">JIA</span>(<span class="params">state, value</span>) &#123;</span><br><span class="line">        <span class="comment">//   console.log(&#x27;mutations中的JIA被调用了&#x27;,state,value)</span></span><br><span class="line">        state.<span class="property">sum</span> += value</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//准备state——用于存储数据</span></span><br><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">    <span class="attr">sum</span>: <span class="number">0</span>, <span class="comment">//当前的和</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建store并暴露（导出）store</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    actions,</span><br><span class="line">    mutations,</span><br><span class="line">    state,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<p>2.组件中读取vuex中的数据：<code>$store.state.sum</code></p>
+<p>3.组件中修改vuex中的数据：<code>$store.dispatch(&#39;action中的方法名&#39;,数据)</code> 或 <code>$store.commit(&#39;mutations中的方法名&#39;,数据)</code></p>
+<p>备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写<code>dispatch</code>，直接写<code>commit</code></p>
+<h4 id="5-getters使用"><a href="#5-getters使用" class="headerlink" title="5. getters使用"></a>5. getters使用</h4><p>1.概念：当state中的数据需要经过加工后再使用时，可以使用getters加工。</p>
+<p>2.在<code>index.js</code>中追加<code>getters</code>配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">const getters = &#123;</span><br><span class="line">    bigSum(state)&#123;</span><br><span class="line">        return state.sum*10</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建store并暴露（导出）store</span><br><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">   ...,</span><br><span class="line">   getters</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>3.组件中读取数据： <code>$store.getters.bigSum</code></p>
+<h4 id="6-四个ma"><a href="#6-四个ma" class="headerlink" title="6. 四个ma"></a>6. 四个ma</h4><h4 id="p方法的使用"><a href="#p方法的使用" class="headerlink" title="p方法的使用"></a>p方法的使用</h4><p>1.mapState方法：用于帮助我们映射<code>state</code>中的数据为计算属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line"></span><br><span class="line">  //借助mapState生成计算属性，从state中读取数据。（对象写法）</span><br><span class="line"></span><br><span class="line">  //  ...mapState(&#123;sum:&#x27;sum&#x27;,school:&#x27;school&#x27;,subject:&#x27;subject&#x27;&#125;),</span><br><span class="line"></span><br><span class="line">  //借助mapState生成计算属性，从state中读取数据。（数组写法）</span><br><span class="line"></span><br><span class="line">  ...mapState([&#x27;sum&#x27;,&#x27;school&#x27;,&#x27;subject&#x27;]),</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.mapGetters方法：用于帮助我们映射<code>getters</code>中的数据为计算属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><div class="post-copyright__author_img"><img class="post-copyright__author_img_front" src="https://img.lonelyzhou.top/img/m1000x1000.JPEG"></div><div class="post-copyright__author_name">有木兮丶</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="social-share"><div class="social-share-ico icon-link" onclick="utils.copy(&quot;https://blog.lonelyzhou.top/note/882edeea.html&quot;)" title="复制文章链接"><i class="solitude fas fa-link"></i></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">有木兮丶</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/note/cc70b376.html"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">vb代码相关</div></div></a></div><div class="next-post pull-right"><a href="/note/a802f1a7.html"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">win相关</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="top-group"><div class="sayhi" id="sayhi" onclick="sco.changeWittyWord()"></div></div></div><div class="avatar"><img alt="头像" src="https://img.lonelyzhou.top/img/m1000x1000.JPEG"></div><div class="description"></div><div class="bottom-group"><span class="left"><div class="name">有木兮丶</div><div class="desc">世上本无事，庸人自扰之 / There is nothing in the world, and the trouble is self-inflicted.</div></span><div class="social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/lonely-zhou" title="Github"><i class="solitude  fab fa-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fas fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%89%8B%E6%9E%B6%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%EF%BC%9A%EF%BC%88markdown%E7%BC%96%E5%86%99%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="toc-text">脚手架文件结构：（markdown编写文件目录）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84Vue%EF%BC%9A"><span class="toc-text">关于不同版本的Vue：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-config-js%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">vue.config.js配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E5%B1%9E%E6%80%A7"><span class="toc-text">ref属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9props"><span class="toc-text">配置项props</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mixin-%E6%B7%B7%E5%85%A5"><span class="toc-text">mixin(混入)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-text">插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E8%BF%90%E8%A1%8C%E9%A1%BA%E5%BA%8F%EF%BC%88%E8%A7%A3%E6%9E%90%E9%A1%BA%E5%BA%8F%EF%BC%89"><span class="toc-text">Vue运行顺序（解析顺序）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scoped-%E6%A0%B7%E5%BC%8F"><span class="toc-text">scoped 样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93TodoList%E6%A1%88%E4%BE%8B"><span class="toc-text">总结TodoList案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webStorage"><span class="toc-text">webStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="toc-text">组件的自定义事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF%EF%BC%88GlobalEventBus%EF%BC%89%E3%80%90%E6%9C%AC%E8%B4%A8%E6%98%AF%E7%BB%84%E4%BB%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E3%80%91"><span class="toc-text">全局事件总线（GlobalEventBus）【本质是组件自定义事件】</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%80%E7%A7%8D%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%8C%E9%80%82%E7%94%A8%E4%BA%8E-%E4%BB%BB%E6%84%8F%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">1.一种组件间通信的方式，适用于 任意组件间通信.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9C%A8main-js-%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF%EF%BC%9A"><span class="toc-text">2.在main.js 安装全局事件总线：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF%EF%BC%9A"><span class="toc-text">3.使用事件总线：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%9C%80%E5%A5%BD%E5%9C%A8beforeDestroy%E5%8B%BE%E5%AD%90%E4%B8%AD%EF%BC%8C%E7%94%A8-off%E5%8E%BB%E8%A7%A3%E7%BB%91-%E5%BD%93%E5%89%8D%E7%BB%84%E4%BB%B6%E6%89%80%E7%94%A8%E5%88%B0%E7%9A%84%E4%BA%8B%E4%BB%B6%E3%80%82"><span class="toc-text">4.最好在beforeDestroy勾子中，用$off去解绑 当前组件所用到的事件。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E4%B8%8E%E5%8F%91%E5%B8%83%EF%BC%88pubsub%EF%BC%89"><span class="toc-text">消息订阅与发布（pubsub）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%80%E7%A7%8D%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%EF%BC%8C%E9%80%82%E7%94%A8%E4%BA%8E-%E4%BB%BB%E6%84%8F%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-text">1.一种组件间通信方式，适用于 任意组件间通信.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-text">2.使用步骤：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nextTick-%E9%87%8D%E8%A6%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-text">nextTick 重要！！！！！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E6%A7%BD"><span class="toc-text">插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD"><span class="toc-text">1.默认插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="toc-text">2.具名插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="toc-text">3. 作用域插槽</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vuex"><span class="toc-text">Vuex</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-text">2. 何时使用？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%90%AD%E5%BB%BAvuex%E7%8E%AF%E5%A2%83"><span class="toc-text">3. 搭建vuex环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">4. 基本使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-getters%E4%BD%BF%E7%94%A8"><span class="toc-text">5. getters使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%9B%9B%E4%B8%AAma"><span class="toc-text">6. 四个ma</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">p方法的使用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fas fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/note/ea538f2a.html" title="Java基础语法"><div class="thumbnail"><img alt="Java基础语法" src="https://img.lonelyzhou.top/img/blog/java基础语法.png"></div><div class="content"><span class="title" href="/note/ea538f2a.html" title="Java基础语法">Java基础语法</span><span class="categories" href="/note/ea538f2a.html">编程</span></div></a><a class="aside-list-item" href="/note/3feb0aba.html" title="Magisk 安装"><div class="thumbnail"><img alt="Magisk 安装" src="/../img/magisk/magisk.png"></div><div class="content"><span class="title" href="/note/3feb0aba.html" title="Magisk 安装">Magisk 安装</span><span class="categories" href="/note/3feb0aba.html">安卓</span></div></a><a class="aside-list-item" href="/note/a378bd8e.html" title="Python"><div class="thumbnail"><img alt="Python" src="/img/python/Python.png"></div><div class="content"><span class="title" href="/note/a378bd8e.html" title="Python">Python</span><span class="categories" href="/note/a378bd8e.html">编程</span></div></a><a class="aside-list-item" href="/note/e5a64255.html" title="docker collabora online + wopi"><div class="content"><span class="title" href="/note/e5a64255.html" title="docker collabora online + wopi">docker collabora online + wopi</span><span class="categories" href="/note/e5a64255.html">编程</span></div></a><a class="aside-list-item" href="/note/8fe2b04b.html" title="java 面试题整理"><div class="thumbnail"><img alt="java 面试题整理" src="/../img/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/java%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86.png"></div><div class="content"><span class="title" href="/note/8fe2b04b.html" title="java 面试题整理">java 面试题整理</span><span class="categories" href="/note/8fe2b04b.html">java</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2020 - 2025 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/favicon.ico">有木兮丶</a></div><div class="beian-group"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referral" title="提供加速服务"><img class="beian-icon" src="/img/%E5%8F%88%E6%8B%8D%E4%BA%91_logo4.png" alt="提供加速服务"><span class="beian-name">提供加速服务</span></a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://hexo.io/">框架：Hexo</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude">主题：Solitude</a></div></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=3.0.19"></script><script src="/js/main.js?v=3.0.19"></script><script src="/js/third_party/waterfall.min.js?v=3.0.19"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/tw_cn.js?v=3.0.19"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script src="https://fastly.jsdelivr.net/npm/colorthief@2.6.0/dist/color-thief.min.js"></script><script src="/js/covercolor/local.js?v=3.0.19"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fas fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=3.0.19"></script><!-- music--></body></html>
+        <script>
+            const posts = ["note/ea538f2a.html","note/3feb0aba.html","note/a378bd8e.html","note/e5a64255.html","note/8fe2b04b.html","note/780af030.html","note/2428cc0.html","note/3ed94a36.html","note/53d0684b.html","note/7df1138c.html","note/7be7930f.html","note/7a44463a.html","note/ef0dfae5.html","note/1569dc91.html","note/cc70b376.html","note/882edeea.html","note/a802f1a7.html"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
