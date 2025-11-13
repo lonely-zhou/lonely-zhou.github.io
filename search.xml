@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Java对象和类</title>
+    <url>/note/f145112f.html</url>
+    <content><![CDATA[1. 类 class
+定义对象的蓝图，包括属性和方法。
+public class 类名 {...}
+
+2. 对象 object
+类的实例，具有状态和行为
+类名 实例名 = new 类名();
+
+3. 继承 inheritance
+一个类可以继承另一个类的属性和方法。
+public class 类A extends 类B {...}
+
+4. 封装 encapsulation
+将对象的状态私有化，通过公共方法访问。
+private String name;public String getName() { return name; }
+
+5. 多态 polymorphism
+对象可以表现为多种形态，通过方法的重载与重写实现。
+
+6. 抽象 abstraction
+使用抽象类和接口来定义必须实现的方法，不提供具体实现。
+抽象类：public abstract class Shape { abstract void draw(); }
+接口：public interface Animal { void eat(); }
+
+7. 接口 interface
+定义必须实现的方法，支持多重继承。
+public interface Drivable { void drive(); }
+
+8. 方法 method
+定义类的行为
+
+9. 方法重载 method overloading
+同一个类中可以有多个同名的方法，但参数不同。
+
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础语法</title>
+    <url>/note/ea538f2a.html</url>
+    <content><![CDATA[Java 基础语法对象与类
+对象：对象是类的一个实例，有状态和行为。
+类：类是一个模板，描述一类对象的行为和状态。
+方法：方法就是行为，一个类可以有很多方法。
+实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。
+
+HelloWorld 示例public class HelloWorld {
+    /* 第一个Java程序
+     * 它将输出字符串 Hello World
+     */
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello World&quot;); // 输出 Hello World
+    }
+}
+
+
+public：访问修饰符
+static：关键字
+void：返回类型
+main：方法名
+String：String类
+args：字符串数组
+
+基本语法规则
+大小写敏感
+类名：首字母大写，多单词首字母均大写
+方法名：小写字母开头，多单词首字母大写
+源文件名：必须和类名相同
+主方法入口：所有 Java 程序从 public static void main(String[] args) 方法开始执行
+
+标识符规则
+所有标识符都应以字母 (A-Z 或 a-z)、美元符号 $ 或下划线 _ 开始
+首字符之后可以是字母、数字、美元符号 $ 或下划线 _
+关键字不可作为标识符
+标识符大小写敏感
+
+修饰符修饰类、方法或属性
+
+访问控制修饰符：default, public, protected, private
+非访问控制修饰符：final, abstract, static, synchronized
+
+变量类型
+局部变量
+类变量（静态变量）
+成员变量（非静态变量）
+
+数组
+数组是存储在堆上的对象
+
+枚举
+枚举限制变量只能是预先设定好的值
+
+关键字数据类型
+
+
+关键字
+用途
+
+
+
+byte
+8位整数类型
+
+
+short
+16位整数类型
+
+
+int
+32位整数类型
+
+
+long
+64位整数类型
+
+
+float
+32位单精度浮点类型
+
+
+double
+64位双精度浮点类型
+
+
+char
+16位字符类型
+
+
+boolean
+布尔类型（true&#x2F;false）
+
+
+流程控制
+
+
+关键字
+用途
+
+
+
+if
+条件语句
+
+
+else
+条件语句的“否则”分支
+
+
+switch
+多分支选择
+
+
+case
+switch 中的分支
+
+
+default
+switch 中的默认分支
+
+
+for
+循环语句
+
+
+while
+循环语句
+
+
+do
+循环语句（至少执行一次）
+
+
+break
+跳出循环或 switch
+
+
+continue
+跳过本次循环，进入下一次循环
+
+
+return
+从方法返回值
+
+
+类、对象、方法
+
+
+关键字
+用途
+
+
+
+class
+定义类
+
+
+interface
+定义接口
+
+
+extends
+继承类
+
+
+implements
+实现接口
+
+
+abstract
+抽象类或抽象方法
+
+
+final
+常量、不可继承类、不可重写方法
+
+
+static
+静态变量、方法
+
+
+this
+当前对象引用
+
+
+super
+父类对象引用
+
+
+new
+创建对象
+
+
+instanceof
+类型判断
+
+
+异常处理
+
+
+关键字
+用途
+
+
+
+try
+异常处理块
+
+
+catch
+捕获异常
+
+
+finally
+异常处理后的最终执行块
+
+
+throw
+抛出异常
+
+
+throws
+声明方法可能抛出的异常
+
+
+访问控制与修饰符
+
+
+关键字
+用途
+
+
+
+public
+公共访问权限
+
+
+protected
+受保护访问权限
+
+
+private
+私有访问权限
+
+
+default
+默认访问权限（包内访问）
+
+
+其他关键字
+
+
+关键字
+用途
+
+
+
+package
+声明包
+
+
+import
+引入类或包
+
+
+enum
+枚举类型
+
+
+assert
+断言
+
+
+null
+空引用
+
+
+true &#x2F; false
+布尔值
+
+
+volatile
+线程间变量可见性修饰符
+
+
+synchronized
+同步方法或块
+
+
+transient
+序列化时忽略字段
+
+
+strictfp
+精确浮点计算
+
+
+native
+本地方法修饰符
+
+
+空行
+空白行或者带注释的行，Java 编译器都会忽略
+
+继承
+一个类可以由其他类派生
+利用继承可以重用已存在类的方法和属性，而无需重写
+被继承的类称为 超类（super class）
+派生类称为 子类（sub class）
+
+接口
+对象间相互通信的协议。
+接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。
+
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java接口</title>
+    <url>/note/8e67ce78.html</url>
+    <content><![CDATA[以下是所选内容的简要概括：
+Java 接口概述
+定义： 接口是一种抽象类型，是抽象方法的集合。它使用 interface 关键字声明，但不能被实例化。
+用途： 一个类通过实现（implements）接口来继承其抽象方法，并必须实现接口中声明的所有方法（除非该类本身是抽象类）。
+与类的区别：
+接口不能实例化对象，没有构造方法。
+接口支持多继承，但类只能单继承。
+接口中的方法隐式为 public abstract。
+接口中的变量隐式为 public static final。
+注意： JDK 1.8 以后，接口可以包含带有方法体的 default 方法和 static 方法；JDK 1.9 以后，还可以有 private 方法。
+
+
+
+
+接口的声明与实现
+声明语法： [可见度] interface 接口名称 [extends 其他的接口名] { ... }
+实现语法： ... implements 接口名称[, 其他接口名称, ...] ...
+实现规则：
+一个类可以实现多个接口。
+实现接口的类必须定义接口中的所有方法，否则该类必须声明为抽象类。
+重写接口方法时，要保持一致的方法名和兼容的返回值类型，并且不能抛出比接口方法更广的强制性异常。
+
+
+
+
+接口的继承
+继承方式： 接口之间可以使用 extends 关键字进行继承。
+多继承： Java 中类不支持多继承，但接口允许多继承。一个接口可以同时继承多个父接口，并使用一次 extends 关键字。
+
+
+标记接口
+定义： 标记接口是不包含任何方法和属性的接口，主要用于给类打上“标记”。
+作用：
+建立一个公共的父接口，例如 java.util.EventListener。
+通过多态性向一个类添加数据类型，表明该类具有某种特定能力或属性。
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java数据结构</title>
+    <url>/note/7038c214.html</url>
+    <content><![CDATA[数组（Arrays）int[] array = new int[5];
+
+特点： 固定大小，存储相同类型的元素。
+优点： 随机访问元素效率高。
+缺点： 大小固定，插入和删除元素相对较慢。
+
+列表（Lists）ArrayListList&lt;String&gt; arrayList = new ArrayList&lt;&gt;();
+
+特点： 动态数组，可变大小。
+优点： 高效的随机访问和快速尾部插入。
+缺点： 中间插入和删除相对较慢。
+
+LinkedListList&lt;Integer&gt; linkedList = new LinkedList&lt;&gt;();
+
+特点： 双向链表，元素之间通过指针连接。
+优点： 插入和删除元素高效，迭代器性能好。
+缺点： 随机访问相对较慢。
+
+集合（Set）存储不重复元素
+HashSetSet&lt;String&gt; hashSet = new HashSet&lt;&gt;();
+
+特点： 无序集合，基于HashMap实现。
+优点： 高效的查找和插入操作。
+缺点： 不保证顺序。
+
+TreeSetSet&lt;Integer&gt; treeSet = new TreeSet&lt;&gt;();
+
+特点： 有序集合，底层基于红黑树实现，不允许重复元素。
+优点： 提供自动排序功能，适用于需要按顺序存储元素的场景。
+缺点： 性能相对较差，不允许插入 null 元素。
+
+映射（Maps）存储键值对
+HashMapMap&lt;String, Integer&gt; hashMap = new HashMap&lt;&gt;();
+
+特点： 基于哈希表实现的键值对存储结构。
+优点： 高效的查找、插入和删除操作。
+缺点： 无序，不保证顺序。
+
+TreeMapMap&lt;String, Integer&gt; treeMap = new TreeMap&lt;&gt;();
+
+特点： 基于红黑树实现的有序键值对存储结构。
+优点： 有序，支持按照键的顺序遍历。
+缺点： 插入和删除相对较慢。
+
+栈（Stack）线性数据结构，后进先出Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+队列（Queue）先进先出Queue&lt;String&gt; queue = new LinkedList&lt;&gt;();
+堆（Heap）PriorityQueue&lt;Integer&gt; minHeap = new PriorityQueue&lt;&gt;();PriorityQueue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());
+树（Trees）TreeNode
+class TreeNode &#123;    int val;    TreeNode left;    TreeNode right;    TreeNode(int x) &#123; val = x; &#125;&#125;
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java重写与重载</title>
+    <url>/note/6bdef53c.html</url>
+    <content><![CDATA[重写子类定义了一个与其父类中具有相同名称、参数列表和返回类型的方法，并且子类方法的实现覆盖了父类方法的实现。
+
+外壳不变，核心重写
+
+参数列表必须相同
+返回类型可以不同，但必须是父类的派生类（子类）
+访问权限不能比父类低
+父类的成员方法只能被它的子类重写
+声明final的方法不能被重写
+声明为 static 的方法不能被重写，但是能够被再次声明。
+同包，可以重写除了private和final的所有方法。
+不同包，可以重写public和protected的非final方法。
+构造方法不能被重写。
+继承必须。
+抛出的异常不能超过父类。
+
+重载
+同一个类中。
+方法名字相同。
+参数不同。
+返回类型可以相同，可以不同。
+
+
+被重载的方法
+
+必须改变参数列表（类型，数量）
+可以改变返回类型
+可以改变访问修饰符
+可以声明新的或更广的检查异常
+方法能够在同一个类中或者在一个子类中被重载。
+无法以返回值类型作为重载函数的区分标准。
+
+
+
+
+区别点
+重载方法
+重写方法
+
+
+
+参数列表
+必须修改
+一定不能修改
+
+
+返回类型
+可以修改
+一定不能修改
+
+
+异常
+可以修改
+可以减少或删除，一定不能抛出新的或者更广的异常
+
+
+访问
+可以修改
+一定不能做更严格的限制（可以降低限制）
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面向对象</title>
+    <url>/note/5f8d3e42.html</url>
+    <content><![CDATA[继承继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。
+
+class 父类 &#123;&#125; class 子类 extends 父类 &#123;&#125;
+不支持多继承，但支持多重继承。
+特性
+子类拥有父类非 private 的属性、方法。
+子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。
+子类可以用自己的方式实现父类的方法。
+Java 的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如 B 类继承 A 类，C 类继承 B 类，所以按照关系就是 B 类是 C 类的父类，A 类是 B 类的父类，这是 Java 继承区别于 C++ 继承的一个特性。
+提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系越紧密，代码独立性越差）。
+
+关键字继承可以使用 extends 和 implements 这两个关键字来实现继承。
+extends类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。
+implements使用 implements 关键字可以变相的使java具有多继承的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。
+super实现对父类成员的访问，用来引用当前对象的父类。
+this指向自己的引用，引用当前对象，即它所在的方法或构造函数所属的对象实例。
+finalfinal 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。final 含义为 “最终的”。使用 final 关键字声明类，就是把类定义定义为最终类，不能被继承，或者用于修饰方法，该方法不能被子类重写：final class 类名 {//类体}修饰符(public/private/default/protected) final 返回值类型 方法名(){//方法体}
+多态同一个行为具有多个不同表现形式或形态的能力。
+
+多态存在的三个必要条件
+继承
+重写
+父类引用指向子类对象：Parent p = new Child();
+
+封装将抽象性函式接口的实现细节部分包装、隐藏起来的方法。
+
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux</title>
+    <url>/note/53d0684b.html</url>
+    <content><![CDATA[中文设置vim /etc/locale.confLANG=&quot;zh_CN.utf8&quot;source /etc/locale.conf
+
+MySQL 启动&#x2F;停止&#x2F;重启service mysql startservice mysql stopservice mysql restart
+
+tomcat 停止&#x2F;启动service tomcat stopservice tomcat start
+
+卸载 mcsmanagersystemctl stop mcsm-&#123;daemon,web&#125;.servicesystemctl disable mcsm-&#123;daemon,web&#125;.servicerm -rf /opt/mcsmanager
+
+Java 环境变量# vim /etc/profileexport JAVA_HOME=/usr/java/jdk-22.0.2export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/libexport PATH=$&#123;JAVA_HOME&#125;/bin:$PATH# . /etc/profile# source /etc/profile# 软连接ln -s /usr/local/jdk-22.0.2/bin/java java
+
+docker 安装dnf config-manager --add-repo=http://mirrors.tencent.com/docker-ce/linux/centos/docker-ce.repodnf install docker-ce# 启动systemctl start docker# 镜像源# vim /etc/docker/daemon.json&#123;        &quot;registry-mirrors&quot;: [                &quot;https://mirror.ccs.tencentyun.com&quot; ,                &quot;https://docker.mirrors.ustc.edu.cn&quot;        ]&#125;
+
+vaultwarden token 设置docker run -d --name vaultwarden -e ADMIN_TOKEN=&#x27;$argon2id$v=19$m=65540,t=3,p=4$vgIdtZLMBNu3LeiDHArtCJ5GfipwC4enN7XE6CJEBZM$Toxc02nDRpMFSmzc2+JAO6dX+x746NW5BAZ2johQsr8&#x27; -v /vw-data/:/data/ --restart unless-stopped -p 8081:80 vaultwarden/server:latest
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Magisk 安装</title>
+    <url>/note/3feb0aba.html</url>
+    <content><![CDATA[adbadb reboot bootloaderfastboot flash boot 面具文件fastboot reboot
+]]></content>
+      <categories>
+        <category>安卓</category>
+      </categories>
+      <tags>
+        <tag>安卓</tag>
+        <tag>magisk</tag>
+        <tag>apatch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python</title>
+    <url>/note/a378bd8e.html</url>
+    <content><![CDATA[pip国内源# 查找配置文件路径 pip config list -v[global]index-url = http://mirrors.aliyun.com/pypi/simple/[install]trusted-host=mirrors.aliyun.com
+
+uv国内源# 环境变量 用户或者系统变量名：UV_DEFAULT_INDEX变量值：https://mirrors.aliyun.com/pypi/simple/
+
+SQLite 基本操作import sqlite3def main():    # 连接到数据库 (如果不存在则创建)    conn = sqlite3.connect(&#x27;mydatabase.db&#x27;)    cursor = conn.cursor()    print(&quot;成功连接到数据库&quot;)    # 创建 &#x27;users&#x27; 表 (如果不存在)    cursor.execute(&#x27;&#x27;&#x27;    CREATE TABLE IF NOT EXISTS users (        id INTEGER PRIMARY KEY AUTOINCREMENT,        name TEXT NOT NULL,        age INTEGER    )    &#x27;&#x27;&#x27;)    conn.commit()    print(&quot;成功创建 &#x27;users&#x27; 表&quot;)    # 插入数据    cursor.execute(&quot;INSERT INTO users (name, age) VALUES (?, ?)&quot;, (&#x27;Alice&#x27;, 30))    users_data = [        (&#x27;Bob&#x27;, 25),        (&#x27;Charlie&#x27;, 35)    ]    cursor.executemany(&quot;INSERT INTO users (name, age) VALUES (?, ?)&quot;, users_data)    conn.commit()    print(&quot;成功插入数据&quot;)    # 查询所有数据    cursor.execute(&quot;SELECT * FROM users&quot;)    rows = cursor.fetchall()    print(&quot;所有用户:&quot;, rows)    # 查询年龄大于 28 的用户    cursor.execute(&quot;SELECT name, age FROM users WHERE age &gt; ?&quot;, (28,))    older_users = cursor.fetchall()    print(&quot;年龄大于 28 的用户:&quot;, older_users)    # 更新 Alice 的年龄    cursor.execute(&quot;UPDATE users SET age = ? WHERE name = ?&quot;, (31, &#x27;Alice&#x27;))    conn.commit()    print(&quot;成功更新 Alice 的年龄&quot;)    # 删除名为 Bob 的用户    cursor.execute(&quot;DELETE FROM users WHERE name = ?&quot;, (&#x27;Bob&#x27;,))    conn.commit()    print(&quot;成功删除 Bob&quot;)    # 再次查询所有数据    cursor.execute(&quot;SELECT * FROM users&quot;)    updated_rows = cursor.fetchall()    print(&quot;更新后的所有用户:&quot;, updated_rows)    # 关闭连接    cursor.close()    conn.close()    print(&quot;已关闭数据库连接&quot;)if __name__ == &quot;__main__&quot;:    main()]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rime 输入法</title>
+    <url>/note/7df1138c.html</url>
+    <content><![CDATA[RIME | 中州韻輸入法引擎
+白霜词库# rime 用户文件夹git clone --depth 1 https://github.com/gaboolic/rime-frost# 更新git pull
+
+主题配色mac:    author: &#x27;lamb&#x27;    name: &#x27;lamb&#x27;    back_color: 0xffffff    corner_radius: 5    border_height: 4    dborder_width: 4    border_color: 0xe0e0e0    border_color_width: 0    candidate_format: &#x27;%c %@  &#x27;    candidate_text_color: 0x333333    font_face: PingFangSC    font_point: 16    text_color: 0x333333    hilited_candidate_label_color: 0xffffff    hilited_text_color: 0xffffff    hilited_candidate_back_color: 0xD05B21    hilited_corner_radius: 5    horizontal: true    inline_preedit: true    label_color: 0x888888    label_font_point: 12
+]]></content>
+      <tags>
+        <tag>输入法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu</title>
+    <url>/note/7be7930f.html</url>
+    <content><![CDATA[下载Ubuntu
+静态IPcd /etc/netplan/sudo vim 50-cloud-init.yamlnetwork:    renderer: networkd    ethernets:        enp6s18:            dhcp4: false            addresses: [10.10.10.12/24]            routes:              - to: default                via: 10.10.10.1            nameservers:              addresses: [10.10.10.10]    version: 2
+
+中文设置sudo apt-get install language-pack-zh-hanssudo update-locale LANG=zh_CN.UTF-8sudo reboot
+
+MySQL安装dnf install mysqldnf install mysql-server
+
+启动MySQLsystemctl start mysqld
+
+设置MySQL自动启动systemctl enable --now mysqld
+
+检查MySQL是否在运行systemctl status mysqld
+输出Active：$\color{green}{active (running)}$
+安全性配置运行mysql_secure_installation脚本，进行密码设置、允许远程连接等安全性设置。
+mysql_secure_installation
+
+设置验证密码组件
+密码等级 0
+输入两遍密码 确认是否继续使用提供的密码 y
+移除匿名用户 y
+允许root远程登陆 n
+移除test数据库 y
+重新载入权限表 y
+结束
+
+设置root用户权限从服务器登录MySQL，将root用户的host字段设为’%’，使得用户root可以从任意IP的机器上登录(若root用户的host字段为localhost,则只能本机登录)。
+
+登录MySQL
+
+mysql -uroot -p输入密码
+
+选择数据库
+
+use mysql;
+
+host字段(主机IP)赋值
+
+update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;;
+
+刷新系统权限
+
+flush privileges;
+
+验证是否设置成功
+
+select user,host from user;
+]]></content>
+  </entry>
+  <entry>
+    <title>docker collabora online + wopi</title>
+    <url>/note/e5a64255.html</url>
+    <content><![CDATA[[[FastAPI WOPI Host (HTTP) 接口文档]]
+
+token：office.local
+docker
+
+wopi接口代码# file_name：wopi_fastapi.py# token：office.local# 文件位置：app/files# 模板文件位置：app/templatesimport osimport iofrom fastapi import FastAPI, HTTPException, Request,Formimport shutilfrom fastapi.responses import JSONResponse, StreamingResponsefrom fastapi.middleware.cors import CORSMiddleware# -------------------------------ACCESS_TOKEN = os.getenv(&quot;ACCESS_TOKEN&quot;, &quot;office.local&quot;)FILE_DIR = os.getenv(&quot;FILE_DIR&quot;, &quot;./files&quot;)TEMPLATE_DIR = os.getenv(&quot;TEMPLATE_DIR&quot;, &quot;./templates&quot;)os.makedirs(FILE_DIR, exist_ok=True)os.makedirs(TEMPLATE_DIR, exist_ok=True)# 如果没有模板文件，可以自己放置一些到 ./templates 目录，比如空的 docx/xlsx/pptxDEFAULT_TEMPLATES = &#123;    &quot;docx&quot;: &quot;empty.docx&quot;,    &quot;xlsx&quot;: &quot;empty.xlsx&quot;,    &quot;pptx&quot;: &quot;empty.pptx&quot;&#125;app = FastAPI(title=&quot;FastAPI WOPI Host (HTTP)&quot;)app.add_middleware(    CORSMiddleware,    allow_origins=[&quot;*&quot;],  # 内网测试可全开    allow_methods=[&quot;*&quot;],    allow_headers=[&quot;*&quot;],)# -------------------------------def verify_token(token: str):    if token != ACCESS_TOKEN:        raise HTTPException(status_code=401, detail=&quot;Invalid access token&quot;)def file_path(file_id: str):    return os.path.join(FILE_DIR, file_id)def file_version(file_id: str):    path = file_path(file_id)    if os.path.exists(path):        return str(int(os.path.getmtime(path)))    return &quot;0&quot;# -------------------------------@app.get(&quot;/wopi/files/&#123;file_id&#125;&quot;)async def check_file_info(file_id: str, access_token: str):    verify_token(access_token)    path = file_path(file_id)    if not os.path.exists(path):        raise HTTPException(status_code=404, detail=&quot;File not found&quot;)    return JSONResponse(&#123;        &quot;BaseFileName&quot;: os.path.basename(path),        &quot;OwnerId&quot;: &quot;user1&quot;,        &quot;UserId&quot;: &quot;user1&quot;,        &quot;Size&quot;: os.path.getsize(path),        &quot;Version&quot;: file_version(file_id),        &quot;ReadOnly&quot;: False,        &quot;UserCanWrite&quot;: True,        &quot;SupportsUpdate&quot;: True    &#125;)@app.get(&quot;/wopi/files/&#123;file_id&#125;/contents&quot;)async def get_file(file_id: str, access_token: str):    verify_token(access_token)    path = file_path(file_id)    if not os.path.exists(path):        raise HTTPException(status_code=404, detail=&quot;File not found&quot;)    return StreamingResponse(open(path, &quot;rb&quot;), media_type=&quot;application/octet-stream&quot;)@app.post(&quot;/wopi/files/&#123;file_id&#125;/contents&quot;)async def put_file(file_id: str, request: Request, access_token: str):    verify_token(access_token)    path = file_path(file_id)    data = await request.body()    with open(path, &quot;wb&quot;) as f:        f.write(data)    return &#123;&quot;status&quot;: &quot;success&quot;, &quot;version&quot;: file_version(file_id)&#125;# -------------------------------# 新建文件接口# -------------------------------@app.post(&quot;/wopi/files/new&quot;)async def create_new_file(filetype: str = Form(...)):    &quot;&quot;&quot;    新建一个文件(docx / xlsx / pptx)    &quot;&quot;&quot;    filetype = filetype.lower()    if filetype not in DEFAULT_TEMPLATES:        raise HTTPException(status_code=400, detail=&quot;不支持的文件类型&quot;)    template_file = os.path.join(TEMPLATE_DIR, DEFAULT_TEMPLATES[filetype])    if not os.path.exists(template_file):        # 如果模板不存在，就建一个空文件        open(template_file, &quot;wb&quot;).close()    # 生成文件名    existing = [f for f in os.listdir(FILE_DIR) if f.endswith(&quot;.&quot; + filetype)]    new_name = f&quot;new_&#123;len(existing)+1&#125;.&#123;filetype&#125;&quot;    new_path = os.path.join(FILE_DIR, new_name)    # 复制模板    shutil.copyfile(template_file, new_path)    # 返回 WOPISrc URL    wopi_src = f&quot;http://192.168.0.105:8000/wopi/files/&#123;new_name&#125;&quot;  # TODO: 改成你的外部可访问地址    return JSONResponse(&#123;        &quot;filename&quot;: new_name,        &quot;url&quot;: wopi_src,        &quot;access_token&quot;: ACCESS_TOKEN    &#125;)# -------------------------------LOCKS = &#123;&#125;@app.post(&quot;/wopi/files/&#123;file_id&#125;/lock&quot;)async def lock_file(file_id: str, request: Request, access_token: str):    verify_token(access_token)    LOCKS[file_id] = True    return &#123;&quot;Lock&quot;: &quot;locked&quot;&#125;@app.post(&quot;/wopi/files/&#123;file_id&#125;/unlock&quot;)async def unlock_file(file_id: str, request: Request, access_token: str):    verify_token(access_token)    LOCKS[file_id] = False    return &#123;&quot;Lock&quot;: &quot;unlocked&quot;&#125;
+requirements.txt# file_name：requirements.txtfastapi==0.111.1uvicorn[standard]==0.23.2python-multipart==0.0.6PyJWT==2.9.0
+构建镜像#file_name：dockerfile# 基于官方 Python 镜像FROM python:3.11-slim# 设置工作目录WORKDIR /app# 复制代码COPY wopi_fastapi.py /app/# 安装依赖RUN pip install --no-cache-dir fastapi uvicorn python-multipart# 创建文件存储目录RUN mkdir -p /app/files# 设置环境变量（非 HTTPS）ENV ACCESS_TOKEN=office.localENV FILE_DIR=/app/files# 暴露端口EXPOSE 8000# 启动 FastAPICMD [&quot;uvicorn&quot;, &quot;wopi_fastapi:app&quot;, &quot;--host&quot;, &quot;0.0.0.0&quot;, &quot;--port&quot;, &quot;8000&quot;, &quot;--reload&quot;]
+docker build -t {镜像名} .eg：docker build -t wopi-fastapi .
+启动容器# file_name：docker-compose.yamlversion: &#x27;3.8&#x27;services:  collabora:    image: collabora/code:latest    container_name: collabora    restart: always    environment:      - extra_params=--o:ssl.enable=false    ports:      - &quot;9980:9980&quot;  wopi-server:    image: wopi-fastapi:latest    container_name: wopi    restart: always    ports:      - &quot;8000:8000&quot;    volumes:      - ../res/files:/app/files      - ../res/templates:/app/templates
+docker-compose up -d
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>wopi</tag>
+        <tag>collabora</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java 面试题整理</title>
+    <url>/note/8fe2b04b.html</url>
+    <content><![CDATA[Java基础1. ==和equals()的区别
+==比较两个对象的引用是否指向同一个内存地址（基本数据类型比较值）
+equals()是Object类的方法，默认实现与==相同，但通常被重写用于比较对象的内容
+
+2. String、StringBuilder和StringBuffer的区别
+String：不可变字符序列，线程安全
+StringBuilder：可变字符序列，非线程安全，性能高
+StringBuffer：可变字符序列，线程安全（方法加synchronized），性能稍低
+
+3. final关键字的作用
+final变量：常量，只能赋值一次
+final方法：不能被子类重写
+final类：不能被继承
+
+4. 面向对象的三大特性
+封装：隐藏内部实现，提供公共访问方式
+继承：子类继承父类特征和行为
+多态：同一操作作用于不同对象，产生不同结果
+
+5. 抽象类和接口的区别
+
+
+特性
+抽象类
+接口
+
+
+
+方法
+可以有具体方法
+Java8前只能是抽象方法
+
+
+变量
+无限制
+默认public static final
+
+
+实现
+单继承
+多实现
+
+
+构造器
+可以有
+不能有
+
+
+设计目的
+代码复用
+定义规范
+
+
+6. 重载(Overload)和重写(Override)的区别
+重载：同一类中，方法名相同但参数不同（类型、数量、顺序）
+重写：子类中，方法名、参数列表与父类相同，覆盖父类实现
+
+7. ArrayList和LinkedList的区别
+
+
+特性
+ArrayList
+LinkedList
+
+
+
+底层
+动态数组
+双向链表
+
+
+随机访问
+O(1)
+O(n)
+
+
+插入删除
+O(n)
+O(1)
+
+
+空间
+预留空间
+每个元素额外空间
+
+
+8. HashMap的工作原理
+基于哈希表实现，使用数组+链表+红黑树（JDK8）
+通过key的hashCode计算数组下标
+解决哈希冲突：链表法，当链表长度&gt;8时转为红黑树
+扩容机制：默认负载因子0.75，扩容为原容量2倍
+
+9. 创建线程的几种方式
+继承Thread类
+实现Runnable接口
+实现Callable接口（可返回结果）
+使用线程池（Executor框架）
+
+10. volatile关键字的作用
+保证变量的可见性：一个线程修改后立即对其他线程可见
+禁止指令重排序：防止JVM优化导致执行顺序改变
+不保证原子性（如i++操作仍需同步）
+
+JVM1. Java内存区域划分
+程序计数器：线程私有，当前线程执行的字节码行号
+虚拟机栈：线程私有，存储栈帧（局部变量表、操作数栈等）
+本地方法栈：为Native方法服务
+堆：线程共享，存放对象实例
+方法区：线程共享，存储类信息、常量、静态变量等
+
+2. 垃圾回收算法有哪些
+标记-清除：标记无用对象后清除，会产生内存碎片
+复制算法：将内存分为两块，存活对象复制到另一块
+标记-整理：标记后让存活对象向一端移动
+分代收集：新生代(复制算法)、老年代(标记-清除&#x2F;整理)
+
+3. 类加载过程
+加载：获取类的二进制字节流
+验证：确保Class文件符合规范
+准备：为静态变量分配内存并设置默认值
+解析：将符号引用转为直接引用
+初始化：执行类构造器&lt;clinit&gt;()方法
+
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>maven</title>
+    <url>/note/780af030.html</url>
+    <content><![CDATA[阿里云镜像&lt;mirror&gt;  &lt;id&gt;aliyunmaven&lt;/id&gt;  &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;  &lt;name&gt;阿里云公共仓库&lt;/name&gt;  &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;&lt;/mirror&gt;
+
+
+
+分环境打包&lt;build&gt;  &lt;!-- 指定配置文件--&gt;  &lt;finalName&gt;HIS&lt;/finalName&gt;  &lt;resources&gt;    &lt;resource&gt;      &lt;directory&gt;src/main/resources&lt;/directory&gt;      &lt;!-- 资源根目录排除各环境的配置，防止在生成目录中多余其它目录 --&gt;      &lt;filtering&gt;true&lt;/filtering&gt;      &lt;excludes&gt;        &lt;exclude&gt;dev/*&lt;/exclude&gt;        &lt;exclude&gt;pro/*&lt;/exclude&gt;      &lt;/excludes&gt;    &lt;/resource&gt;    &lt;resource&gt;      &lt;directory&gt;src/main/resources/$&#123;profiles.active&#125;&lt;/directory&gt;    &lt;/resource&gt;  &lt;/resources&gt;&lt;/build&gt;&lt;profiles&gt;  &lt;profile&gt;    &lt;!-- 本地开发环境 --&gt;    &lt;id&gt;dev&lt;/id&gt;    &lt;properties&gt;      &lt;!-- 这里的标签名会和resourse进行拼接 --&gt;      &lt;profiles.active&gt;dev&lt;/profiles.active&gt;    &lt;/properties&gt;    &lt;!-- 这里配置为默认选项 --&gt;    &lt;activation&gt;      &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;    &lt;/activation&gt;  &lt;/profile&gt;  &lt;profile&gt;    &lt;!-- 生产环境 --&gt;    &lt;id&gt;pro&lt;/id&gt;    &lt;properties&gt;      &lt;profiles.active&gt;pro&lt;/profiles.active&gt;    &lt;/properties&gt;  &lt;/profile&gt;&lt;/profiles&gt;
+
+jar包 （包含依赖）&lt;build&gt;  &lt;plugins&gt;    &lt;plugin&gt;      &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;      &lt;executions&gt;        &lt;execution&gt;          &lt;phase&gt;package&lt;/phase&gt;          &lt;goals&gt;            &lt;goal&gt;single&lt;/goal&gt;          &lt;/goals&gt;        &lt;/execution&gt;      &lt;/executions&gt;      &lt;configuration&gt;        &lt;descriptorRefs&gt;          &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;        &lt;/descriptorRefs&gt;        &lt;archive&gt;          &lt;manifest&gt;            &lt;mainClass&gt;Main&lt;/mainClass&gt;          &lt;/manifest&gt;        &lt;/archive&gt;      &lt;/configuration&gt;    &lt;/plugin&gt;  &lt;/plugins&gt;&lt;/build&gt;
+
+
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nacos</title>
+    <url>/note/2428cc0.html</url>
+    <content><![CDATA[# 单机模式启动startup.cmd -m standalone
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>SpringCloud</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>obsidian CSS片段</title>
+    <url>/note/3ed94a36.html</url>
+    <content><![CDATA[状态栏居中/* 状态栏居中 */div.status-bar &#123;    --status-bar-position: absolute;    right: 0;    left: 0;    width: fit-content;    padding: 6px var(--size-4-2);    margin: 0 auto;    background: var(--background-secondary-blur);    border: 1px solid var(--window-border-color);    border-radius: var(--radius-s);&#125;
+
+自动隐藏侧边栏.sidebar-toggle-button.mod-left &#123;    justify-content: right; /*交互区对齐*/    margin-left: -28px; /*左侧栏按钮位置*/&#125;.sidebar-toggle-button.mod-left svg &#123;    opacity: 0; /*左侧栏按钮 SVG 不透明度*/&#125;.workspace-ribbon.side-dock-ribbon.mod-left:not(:hover)::before,.workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) &#123;    border-right-color: transparent;    margin-left: -32px;&#125;.workspace-ribbon.side-dock-ribbon.mod-left::before,.workspace-ribbon.side-dock-ribbon.mod-left &#123;    transition: var(--anim-duration-moderate);&#125;
+]]></content>
+  </entry>
+  <entry>
+    <title>openwrt</title>
+    <url>/note/7a44463a.html</url>
+    <content><![CDATA[换源# openwrt 官方源src/gz openwrt_core https://downloads.openwrt.org/releases/23.05.3/targets/x86/64/packagessrc/gz openwrt_base https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/basesrc/gz openwrt_luci https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/lucisrc/gz openwrt_packages https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/packagessrc/gz openwrt_routing https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/routingsrc/gz openwrt_telephony https://downloads.openwrt.org/releases/23.05.3/packages/x86_64/telephony# 清华源src/gz openwrt_core https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/targets/x86/64/packagessrc/gz openwrt_base https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/basesrc/gz openwrt_luci https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/lucisrc/gz openwrt_packages https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/packagessrc/gz openwrt_routing https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/routingsrc/gz openwrt_telephony https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/23.05.3/packages/x86_64/telephony# kenzok8src/gz kenzok8 https://op.dllkids.xyz/packages/x86_64# 中科大sed -i &#x27;s/downloads.openwrt.org/mirrors.ustc.edu.cn\/openwrt/g&#x27; /etc/opkg/distfeeds.conf
+
+module ‘luci.cbi’ not foundopkg updateopkg install luci luci-base luci-compat
+
+扩容空间cfdisk /dev/nvme0n1mkfs.ext4 /dev/nvme0n1p3/dev/sda3opkg install block-mountmkdir -p /tmp/introotmkdir -p /tmp/extrootmount --bind / /tmp/introotmount /dev/sda3 /tmp/extroottar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -umount /tmp/introotumount /tmp/extroot
+
+no field package.preload[‘luci.cbi’]opkg install luci luci-base luci-compat
+]]></content>
+  </entry>
+  <entry>
+    <title>pve</title>
+    <url>/note/ef0dfae5.html</url>
+    <content><![CDATA[转换 ISOqm importdisk 100 /var/lib/vz/template/iso/openwrt-23.05.4-x86-64-generic-ext4-combined-efi.img local-lvm
+
+PVE 美化wget -q -O /root/pve_source.tar.gz &#x27;https://bbs.x86pi.cn/file/topic/2023-11-28/file/01ac88d7d2b840cb88c15cb5e19d4305b2.gz&#x27; &amp;&amp; tar zxvf /root/pve_source.tar.gz &amp;&amp; /root/./pve_source
+]]></content>
+  </entry>
+  <entry>
+    <title>tomcat 启用log4j</title>
+    <url>/note/1569dc91.html</url>
+    <content><![CDATA[tomcat 安装目录 lib文件夹增加jar包与配置文件jar包https://mvnrepository.com/artifact/log4j/log4j
+配置文件### 设置 ###log4j.rootLogger=info,stdout,D,E### 输出信息到控制抬 ###log4j.appender.stdout=org.apache.log4j.ConsoleAppenderlog4j.appender.stdout.Target=System.outlog4j.appender.stdout.layout=org.apache.log4j.PatternLayoutlog4j.appender.stdout.layout.ConversionPattern=[%-5p] %d&#123;yyyy-MM-dd HH:mm:ss&#125; method:%l%n%m%n### 输出DEBUG 级别以上的日志到=logs/error.log ###log4j.appender.D=org.apache.log4j.DailyRollingFileAppenderlog4j.appender.D.DatePattern=&#x27;-&#x27;yyyy-MM-dd&#x27;.log&#x27;log4j.appender.D.File=路径/info.loglog4j.appender.D.encoding=UTF-8log4j.appender.D.File.encoding=UTF-8log4j.appender.D.Append=truelog4j.appender.D.Threshold=DEBUGlog4j.appender.D.filter.filterName=org.apache.log4j.varia.LevelRangeFilterlog4j.appender.D.filter.filterName.LevelMin=INFOlog4j.appender.D.filter.filterName.LevelMax=INFOlog4j.appender.D.layout=org.apache.log4j.PatternLayoutlog4j.appender.D.layout.ConversionPattern=%-d&#123;yyyy-MM-dd HH:mm:ss&#125;  [ %F ] - [ %p ]  %n%m%n%n### 输出ERROR 级别以上的日志到=logs/error.log ###log4j.appender.E=org.apache.log4j.DailyRollingFileAppenderlog4j.appender.E.DatePattern=&#x27;-&#x27;yyyy-MM-dd&#x27;.log&#x27;log4j.appender.E.File=路径/error.loglog4j.appender.E.File.encoding=UTF-8log4j.appender.E.encoding=UTF-8log4j.appender.E.Append=truelog4j.appender.E.Threshold=ERRORlog4j.appender.E.filter.filterName=org.apache.log4j.varia.LevelRangeFilterlog4j.appender.E.filter.filterName.LevelMin=ERRORlog4j.appender.E.filter.filterName.LevelMax=ERRORlog4j.appender.E.layout=org.apache.log4j.PatternLayoutlog4j.appender.E.layout.ConversionPattern=%-d&#123;yyyy-MM-dd HH:mm:ss&#125;  [ %F ] - [ %p ]  %n%m%n%n
+
+groovy 代码import org.apache.log4j.Categoryimport org.apache.log4j.Loggerlog.info()
+]]></content>
+  </entry>
+  <entry>
+    <title>vb代码相关</title>
+    <url>/note/cc70b376.html</url>
+    <content><![CDATA[httpGetPrivate Function HttpGet(ByVal URL As String) As String    On Error GoTo errormsg    Dim HTTP As MSXML2.ServerXMLHTTP    Set HTTP = CreateObject(&quot;Msxml2.ServerXMLHTTP.6.0&quot;)    HTTP.Open &quot;GET&quot;, URL, False    HTTP.send    If HTTP.Status = 200 Then        HttpGet = HTTP.responseText    Else        HttpGet = &quot;推送出错:&quot; &amp; HTTP.Status    End Iferrormsg:    HttpGet = &quot;推送出错，请重试！&quot;End Function
+
+httpPostFunction HttpPost(Url As String, PostMsg As String) As String    On Error GoTo er    Dim XMLHTTP As Object    Set XMLHTTP = CreateObject(&quot;Msxml2.XMLHTTP&quot;)    If Not IsObject(XMLHTTP) Then        Set XMLHTTP = CreateObject(&quot;Microsoft.XMLHTTP&quot;)        If Not IsObject(XMLHTTP) Then Exit Function    End If    XMLHTTP.Open &quot;POST&quot;, Url, False    XMLHTTP.SetRequestHeader &quot;CONTENT-TYPE&quot;, &quot;application/json&quot;    &#x27;XMLHTTP.send PostMsg&#x27;    XMLHTTP.send UTF8EncodeURI(PostMsg)    XMLHTTP.send PostMsg    Do While XMLHTTP.ReadyState &lt;&gt; 4        DoEvents    Loop    If XMLHTTP.Status = 200 Then        HttpPost = XMLHTTP.ResponseText    Else        HttpPost = &quot;400&quot;    End If    Exit Functioner:&#x27;        MsgBox &quot;POST false&quot;    HttpPost = &quot;false&quot;End Function
+]]></content>
+  </entry>
+  <entry>
+    <title>vue笔记</title>
+    <url>/note/882edeea.html</url>
+    <content><![CDATA[第一章 Vue核心
+第二章 Vue组件化编程
+第三章 使用Vue脚手架
+第四章 Vue中的ajax
+第五章 vuex
+第七章 Vue UI组件库
+第六章 vue-router
+脚手架文件结构：（markdown编写文件目录）|-- node_modules|-- public        |-- favicon.ico： 页签图标        |-- index.html：  主页面|-- src    |-- assets： 存放静态资源    |   |-- logo.png    |-- components: 存放组件    |   |-- HelloWorld.vue    |-- App.vue:  汇总所有组件    |-- main.js:  入口文件|-- .gitignore: git版本管制忽略的配置|-- babel.config.js： babel的配置文件|-- package.json：  应用包配置文件|-- README.md：  应用描述文件|-- package-lock.json  包版本控制文件
+
+关于不同版本的Vue：1.vue.js与vue.runtime.xx.js的区别
+    (1).vue.js是完整版的Vue，包含：核心功能+模板解析器
+    (2).vue.runtime.xx.js 是运行版的vue，只包含：核心功能，没有模板解析器
+2.因为vue.runtime.xxx.js没有模板解析器，所以不能使用template配置项，需要使用
+  render函数收到的createElement 去指定具体内容
+
+vue.config.js配置文件
+使用vue inspect &gt; output.js可以查看到Vue脚手架的默认配置使用vue.config.js可以对脚手架进行个性化定制，详情： https://cli.vuejs.org/zh/config/#lintonsave
+
+ref属性1.被用来给元素或子组件注册引用信息（id的替代者）
+2.应用在html标签上获取的是真实的DOM元素，应用在组件标签上是组件实例对象（vc）
+3.使用方式：
+    打标识： &lt;h1 ref=&quot;xxx&quot;&gt;...&lt;/h1&gt;  或 &lt;School ref=&quot;xxx&quot;/&gt;
+    获取： this.$refs.xxx
+
+配置项props功能：让组件接收外部传过来的数据(props传来的优先级高于默认)
+     默认值优先级高 ，与props同名时会提示报错修改默认值name
+(1). 传递数据：
+      &lt;Demo name=&quot;xxx&quot; /&gt;
+(2). 接收数据：
+     第一种方式（只接收）：
+        props:[&#39;name&#39;]
+     第二种方式（限制类型）：
+     props:{
+        name:String
+     }
+     第三种方式（限制类型、限制必要性、指定默认值）：
+     props:{
+        name:{
+            type:String,//类型
+            required:true,//必要性
+            default:&#39;老王&#39; //默认值
+        }
+     }
+父组件传子组件 父组件传来的不允许改变 ，非要改在子组件 通过data 增加一个中间属性
+（如果子组件是传来的年龄属性 加1 记得v-bind: 单项绑定）
+备注：props是只读的，Vue底层会检测你对props的修改，如果进行了修改，就会发出警告，
+     若业务需求确实需要修改，那么请复制props的内容到data中一份 ,
+
+       data() {
+            return {
+                myAge:this.age
+             }
+        }
+
+
+     然后去修改data中的数据myAge
+
+mixin(混入)功能：可以把多个组件共用的配置提取成一个混入对象
+使用方式：
+    第一步定义混合，例如：
+        export const a = {
+            data(){...},
+            methods:{...}
+            ...
+
+        }
+    第二步使用混入，例如：
+       (1).全局混入：Vue.mixin(xxx)
+       (2).局部混入：mixins:[&#39;xxx&#39;]
+
+插件功能：用于增强Vue本质：包含install方法的一个对象MyPlugin，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。
+      定义插件：
+      对象.install = function (Vue,options){
+      //1.添加全局过滤器
+      Vue.filter(..)
+
+      //2.添加全局指令
+      Vue.directive(..)
+      //3.配合全局混入（合）
+      Vue.mixin(..)
+
+      //4.添加实例方法
+      Vue.prototype.$myMethod = function () {...}
+      Vue.prototype.$myProperty = xxx
+    }
+  使用插件： Vue.use()
+
+Vue运行顺序（解析顺序）1.先引入js 2.读取配置项 3.解析模板
+scoped 样式作用：让样式在局部生效，防止冲突写法: 
+总结TodoList案例
+组件化编码流程：(1).拆分静态组件：组件要按照功能点拆分，命名不要与html元素冲突(2).实现动态组件：考虑好数据的存放位置，数据是一个组件再用，还是一些组件在用：
+ 1).一个组件在用：放在组件自身即可     2).一些组件再用：放在他们共同的父组件上，（状态提升）
+ (3).实现交互：从绑定事件开始
+
+props适用于：(1) .父组件 &#x3D;&#x3D;&gt; 子组件通信
+ (2). 子组件 &#x3D;&#x3D;&gt; 父组件通信 （要求父先给字一个函数）
+
+使用v-model时要切记： v-model绑定的值不能是props传过来的值，因为props是不可以修改的！
+
+props传过来的若是对象类型的值，修改对象中的属性时Vue不会报错，但不推荐这样做
+
+
+webStorage1.存储内容大小一般支持5MB左右（不同浏览器可能还不一样）
+2.浏览器端通过 window.sessionStorage和window.localStorage属性来实现本地存储机制.
+3.相关API:
+
+xxxStorage.setItem(‘key’,’value’);
+
+该方法接受一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+2.xxxStorage.getItem(‘person’);
+该方法接收一个键名作为参数，返回键名对应的值。
+3.xxxStorage.removeItem(‘person’);
+该方法接收一个键名作为参数，并把该键名从存储中删除。
+
+xxxStorage.clear()
+
+该方法会清空存储中的所有数据
+
+备注
+
+SessionStorage存储的内容会随着浏览器窗口关闭而消失
+LocalStorage存储的内容,需要手动清除才会消失
+xxxStorage.getItem(xxx)如果xxx对应的value获取不到，那么getItem的返回值是null
+JSON.parse(null)的结果依然是null
+
+
+
+组件的自定义事件
+一种组件间的方式，适用于： 子组件 &#x3D;&#x3D;&gt; 父组件
+
+使用场景：A是父组件，B是子组件，B想给A传数据，那么就要在A中给B绑定自定义事件 （事件的回调在A中）
+
+绑定自定义事件：
+ 1.第一种，在父组件中：&lt;Demo @mxh=&quot;test&quot; /&gt;   或&lt;Demo v-on:mxh=&quot;test&quot; /&gt;
+ 2.第二种，在父组件中：
+ &lt;Demo ref=&quot;demo&quot;/&gt;.....mounted()&#123;this.$refs.demo.$on(&#x27;mxh&#x27;,this.test)&#125;
+
+ 3.若想让自定义事件只能触发一次，可以使用1中用 once修饰符，2中用$once方法
+
+触发自定义事件：this.$emit(&#39;mxh&#39;,数据)
+
+解绑自定义事件：this.$off(&#39;mxh&#39;)
+
+组件上也可以绑定原生DOM事件，需要使用native修饰符 &lt;Student @click.native=&quot;show&quot;/&gt;
+
+注意：通过this.$refs.xxx.$on(&#39;mxh&#39;,回调)绑定自定义事件时，回调要么配置在methods中，要么用箭头函数，否则this指向会出问题！
+
+
+全局事件总线（GlobalEventBus）【本质是组件自定义事件】1.一种组件间通信的方式，适用于 任意组件间通信.2.在main.js 安装全局事件总线：new Vue(&#123;...    beforeCreate()&#123;        Vue.prototype.$bus = this //安装全局事件总线，$bus就是当前应用的vm    &#125;...&#125;)
+
+3.使用事件总线：1.接收数据：A组件想接收数据，则在A组件中给$bus绑定自定义事件，事件的回调留在A组件自身。定义this.$bus.$on和this.$bus.$off
+methods:&#123;    demo(data)&#123;...&#125;&#125;mounted()&#123;    this.$bus.$on(&#x27;xxx&#x27;,this.demo)&#125;beforeDestroy() &#123;    this.$bus.$off(&#x27;xxx&#x27;)&#125;
+
+2.提供（发送）数据：定义this.$bus.$emit(&#39;xxx&#39;,数据)
+methods: &#123;    sendStudentName()&#123;        this.$bus.$emit(&#x27;xxx&#x27;,this.name)    &#125;&#125;
+
+4.最好在beforeDestroy勾子中，用$off去解绑 当前组件所用到的事件。解绑       this.$bus.$off(&#39;xxx&#39;)
+消息订阅与发布（pubsub）1.一种组件间通信方式，适用于 任意组件间通信.2.使用步骤：1.安装pubsub：npm i pubsub-js
+2.引入：import pubsub from &#39;pubsub-js&#39;
+3.订阅消息（接收数据）：A组件想接收数据，则在A组件中订阅消息，订阅的回调留在A组件自身。
+methods()&#123;    demo(data)&#123;...&#125;&#125;.....mounted()&#123;    this.pid = pubsub.subscribe(&#x27;xx消息名&#x27;,this.demo)//订阅消息&#125;beforeDestroy() &#123;    pubsub.unsubscribe(pid)//取消订阅&#125;
+
+4.发布消息（提供数据）：pubsub.publish(&#39;xxx消息名&#39;,数据)
+methods:&#123;     sendStudentName()&#123;       pubsub.publish(&#x27;xxx消息名字&#x27;,&#x27;666&#x27;)//发布消息名     &#125;   &#125;
+
+5.最好在beforeDestroy勾子中，用pubsub.unsubscribe(pid) 去 取消订阅.
+nextTick 重要！！！！！1.语法：this.$nextTick(回调函数)
+&lt;input       type=&quot;text&quot;       v-show=&quot;todo.isEdit&quot;       :value=&quot;todo.title&quot;       @blur=&quot;handleBlur(todo, $event)&quot;       ref=&quot;inputTitle&quot; /&gt;  方法名() &#123;     this.$nextTick(function () &#123;       this.$refs.inputTitle.focus();     &#125;);  &#125;
+
+2.作用：在下一次DOM更新结束后执行其指定的回调
+3.什么时候用：当改变数据后，要基于更新后的DOM进行某些操作时【新输入框获取焦点】，要在nextTick所指定的回调函数中执行。
+插槽1.作用：让父组件可以向子组件指定位置插入html结构，也是一种组件间通信的方式，适用于父组件&#x3D;&#x3D;&#x3D;&gt;子组件。
+2.分类：默认插槽、具名插槽、作用域插槽
+3.使用方式：
+1.默认插槽父组件中：        &lt;Category&gt;              &lt;div&gt; html结构1 &lt;/div&gt;       &lt;/Category&gt;子组件中：       &lt;template&gt;            &lt;div&gt;           &lt;!-- 定义插槽 --&gt;                 &lt;slot&gt;插槽默认内容&lt;/slot&gt;             &lt;/div&gt;       &lt;/template&gt;
+
+2.具名插槽父组件中    &lt;Category&gt;       &lt;template slot=&quot;center&quot;&gt;              &lt;div&gt; html结构1 &lt;/div&gt;       &lt;/template&gt;      &lt;template v-slot:&quot;footer&quot;&gt;              &lt;div&gt; html结构2 &lt;/div&gt;       &lt;/template&gt;   &lt;/Category&gt;子组件中   &lt;template&gt;      &lt;div&gt;           &lt;!-- 定义插槽 --&gt;          &lt;slot name=&quot;center&quot;&gt;插槽默认内容。。&lt;/slot&gt;          &lt;slot name=&quot;footer&quot;&gt;插槽默认内容。。&lt;/slot&gt;      &lt;/div&gt;   &lt;/template&gt;
+
+3. 作用域插槽1.理解：数组在组件的自身，但根据数据生成的结构需要组件的使用者来决定。
+（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定)             2.具体编码：
+父组件中 &lt;Category &gt;      &lt;template scope=&quot;mxh&quot;&gt;        &lt;!-- 生成ul列表 --&gt;        &lt;ul&gt;          &lt;li v-for=&quot;(item, index) in mxh.games&quot; :key=&quot;index&quot;&gt;&#123;&#123; item &#125;&#125;&lt;/li&gt;        &lt;/ul&gt;      &lt;/template&gt;  &lt;/Category&gt;   &lt;Category &gt;      &lt;template slot-scope=&quot;&#123;games&#125;&quot;&gt; &lt;!-- 解构赋值 --&gt;         &lt;!-- 生成ul列表 --&gt;        &lt;h4 v-for=&quot;(item, index) in games&quot; :key=&quot;index&quot;&gt;&#123;&#123; item &#125;&#125;&lt;/h4&gt;      &lt;/template&gt;    &lt;/Category&gt;子组件中&lt;template&gt;  &lt;div&gt;    &lt;!-- 定义一个插槽(挖个坑，等着组件的使用者进行填充) --&gt;   &lt;slot :games=&quot;games&quot; &gt;我是默认的一些内容&lt;/slot&gt;  &lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default &#123;  name: &quot;Category&quot;,  props:[&#x27;title&#x27;], //数据在子组件自身  data() &#123;    return &#123;      games: [&quot;红色警戒&quot;, &quot;超级玛丽&quot;, &quot;飞车&quot;, &quot;选五&quot;],    &#125;;  &#125;,&#125;;&lt;/script&gt;
+
+Vuex1. 概念在Vue中实现集中式状态（数据）管理的一个Vue插件，对Vue应用中多个组件的共享状态进行集中式的管理（读&#x2F;写），也是一种组件间通信的方式，且适用于任意组件间通信。
+2. 何时使用？多个组件需要共享数据时
+3. 搭建vuex环境
+npm i vuex  注意！！！【vue2 是vuex3 ，vue3是vuex4】
+
+安装指定版本 npm i vuex@3
+2.创建文件：src/store/index.js
+//引入Vue核心库
+import Vue from &#39;vue&#39;
+//引入Vuex
+import Vuex from &#39;vuex&#39;
+//应用Vuex插件
+Vue.use(Vuex)
+
+//准备actions——用于响应组件中的动作
+const actions = {}
+//准备mutation——用于操作数据(state)
+const mutations = {}
+//准备state——用于存储数据
+const state = {}
+
+//创建store并暴露（导出）store
+export default new Vuex.Store({
+   actions,
+   mutations,
+   state,
+
+})
+
+3.在main.js中创建vm时传入store配置项
+注意！！！main.js 执行顺序会先执行import 引入 ，在执行console.log等，和代码顺序无关
+....//引入storeimpor store from &#x27;./store&#x27;....//创建vm new Vue(&#123;    el:&#x27;#app&#x27;,    render: h =&gt; h(App),    store,&#125;)
+
+4. 基本使用1.初始化数据、配置actions、配置mutations，操作文件index.js
+//引入Vue核心库import Vue from &#x27;vue&#x27;//引入Vueximport Vuex from &#x27;vuex&#x27;//应用Vuex插件Vue.use(Vuex)//准备actions——用于响应组件中的动作const actions = &#123;    //响应组件中加的动作    jia(context, value) &#123;        // console.log(&#x27;actions中的jia被调用了&#x27;,context,value);        context.commit(&#x27;JIA&#x27;, value)    &#125;,&#125;//准备mutation——用于操作数据(state)const mutations = &#123;    //执行加    JIA(state, value) &#123;        //   console.log(&#x27;mutations中的JIA被调用了&#x27;,state,value)        state.sum += value    &#125;,&#125;//准备state——用于存储数据const state = &#123;    sum: 0, //当前的和&#125;//创建store并暴露（导出）storeexport default new Vuex.Store(&#123;    actions,    mutations,    state,&#125;)//
+
+2.组件中读取vuex中的数据：$store.state.sum
+3.组件中修改vuex中的数据：$store.dispatch(&#39;action中的方法名&#39;,数据) 或 $store.commit(&#39;mutations中的方法名&#39;,数据)
+备注：若没有网络请求或其他业务逻辑，组件中也可以越过actions，即不写dispatch，直接写commit
+5. getters使用1.概念：当state中的数据需要经过加工后再使用时，可以使用getters加工。
+2.在index.js中追加getters配置
+...const getters = &#123;    bigSum(state)&#123;        return state.sum*10    &#125;&#125;//创建store并暴露（导出）storeexport default new Vuex.Store(&#123;   ...,   getters&#125;)
+
+3.组件中读取数据： $store.getters.bigSum
+6. 四个map方法的使用1.mapState方法：用于帮助我们映射state中的数据为计算属性
+computed:&#123;  //借助mapState生成计算属性，从state中读取数据。（对象写法）  //  ...mapState(&#123;sum:&#x27;sum&#x27;,school:&#x27;school&#x27;,subject:&#x27;subject&#x27;&#125;),  //借助mapState生成计算属性，从state中读取数据。（数组写法）  ...mapState([&#x27;sum&#x27;,&#x27;school&#x27;,&#x27;subject&#x27;]),&#125;
+
+2.mapGetters方法：用于帮助我们映射getters中的数据为计算属性
+computed:&#123;&#125;
+]]></content>
+  </entry>
+  <entry>
+    <title>win相关</title>
+    <url>/note/a802f1a7.html</url>
+    <content><![CDATA[winget 彩虹进度条# winget settings&#123;    &quot;visual&quot;: &#123;        &quot;progressBar&quot;: &quot;rainbow&quot;    &#125;&#125;
+
+win11右键菜单修改win10样式# cmdreg.exe add &quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot; /f /ve# win11reg.exe delete &quot;HKCU\Software\Classes\CLSID\&#123;86ca1aa0-34aa-4e8b-a509-50c905bae2a2&#125;\InprocServer32&quot; /va /f
+
+win终端 ssh# .ssh 目录新建文件config# 保持心跳Host *    ServerAliveInterval 40# 别名登录Host txy    HostName ip    User root  	Port 22    IdentityFile ~/.ssh/OpenCloudOS.pem
+]]></content>
+  </entry>
+</search>
