@@ -86,7 +86,7 @@ hometop:
         title: Solitude 官方文档
         url: https://solitude.js.org/
         img: /img/default.avif
-        color: 'none'
+        color: "none"
 
 # Article Top Banner
 # 文章推荐轮播图
@@ -103,14 +103,14 @@ aside:
     # Sticky: Fixed position / noSticky: Not fixed position
     # Sticky: 固定位置 / noSticky: 不固定位置
     home: # on the homepage
-        noSticky: 'about'
-        Sticky: 'allInfo'
+        noSticky: "about"
+        Sticky: "allInfo"
     post: # on the article page
-        noSticky: 'about'
-        Sticky: 'newestPost'
+        noSticky: "about"
+        Sticky: "newestPost"
     page: # on the page
-        noSticky: 'about'
-        Sticky: 'newestPost,allInfo'
+        noSticky: "about"
+        Sticky: "newestPost,allInfo"
     # 菜单栏位置(0: 左 1: 右)
     position: 1 # Sidebar positioning(0: left 1: right)
 
@@ -184,7 +184,7 @@ aside:
         runtimeenable: true
         # Format: yyyy-MM-dd hh-mm-ss
         # 格式: yyyy-MM-dd hh-mm-ss
-        runtime: '2020-04-20 00:00:00'
+        runtime: "2020-04-20 00:00:00"
     # --------------------------- end ---------------------------
 # --------------------------- end ---------------------------
 
@@ -317,8 +317,8 @@ post:
 # --------------------------- start ---------------------------
 # Custom Theme Color
 theme_color:
-    dark: '#ffc848' # dark
-    light: '#425AEF' # light
+    dark: "#ffc848" # dark
+    light: "#425AEF" # light
 # --------------------------- end ---------------------------
 
 # --------------------------- start ---------------------------
@@ -341,7 +341,7 @@ font:
     code-font-size: 16px
     # Global font
     # 全局字体
-    font-family: 'PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif'
+    font-family: "PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif"
     # Code font
     # 代码字体
     code-font-family: '"monospace", monospace'
@@ -374,8 +374,8 @@ expire:
     enable: false
     time: 30 # days
     position: top # top / bottom
-    text_prev: 'This article expired '
-    text_next: ' day ago, if the content does not match, please contact the webmaster to update it.'
+    text_prev: "This article expired "
+    text_next: " day ago, if the content does not match, please contact the webmaster to update it."
 # --------------------------- end ---------------------------
 
 # --------------------------- start ---------------------------
@@ -482,7 +482,7 @@ console:
         tags: true
         # Archives
         # 归档
-        archive: 'month' # month: by month / year: by year
+        archive: "month" # month: by month / year: by year
 # --------------------------- end ---------------------------
 
 # --------------------------- start ---------------------------
@@ -541,7 +541,7 @@ footer:
           icon: https://beian.mps.gov.cn/img/logo01.dd7ff50e.png
           url: https://beian.mps.gov.cn/#/query/webSearch
         - name: 辽ICP备2024037964号-2
-          icon: https://beian.miit.gov.cn/img/bg_logo.2ce2f33d.png
+          icon: https://img.dzho.cn/img/icp.png
           url: https://beian.miit.gov.cn/
 
     # 页脚信息文字
@@ -578,7 +578,7 @@ errorpage:
 # can only use NetEase Cloud Music, QQ Music and other music platforms supported by the mainland China region,
 # the subsequent consideration of the use of JSON files to store music information and customize the implementation of the third-party API does not depend on the page.
 # Music Page
-meting_api: 'https://meting.qjqq.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r' # Custom API
+meting_api: "https://meting.qjqq.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r" # Custom API
 # --------------------------- end ---------------------------
 
 # --------------------------- start ---------------------------
@@ -625,7 +625,7 @@ lazyload:
     # post, site
     field: site
     # 加载时替换图
-    placeholder: ''
+    placeholder: ""
     # 加载失败替换图
     errorimg: /img/error_load.avif
 # --------------------------- end ---------------------------
@@ -763,7 +763,7 @@ extends:
 pwa:
     enable: false
     manifest: /manifest.json # manifest.json
-    theme_color: '#006a73' # Theme color
+    theme_color: "#006a73" # Theme color
     mask_icon: /img/pwa/favicon.png # Mask icon
     apple_touch_icon: /img/pwa/favicon.png # Apple touch icon
     bookmark_icon: /img/pwa/favicon.png # Bookmark icon
