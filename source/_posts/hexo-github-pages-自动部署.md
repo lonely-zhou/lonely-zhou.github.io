@@ -8,7 +8,8 @@ abbrlink: 1eefca4c
 date: 2026-01-15 11:41:58
 ---
 .github\workflows\autodeploy.yml
-```ymal
+
+```yaml
 # 当有改动推送到master分支时，启动Action
 name: 自动部署
 
