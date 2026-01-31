@@ -4,7 +4,7 @@ name: 自动部署
 on:
     push:
         branches:
-            - source #监听source分支的push事件
+            - main #监听source分支的push事件
 
 permissions:
     contents: read
@@ -25,7 +25,7 @@ jobs:
             - name: 检查分支
               uses: actions/checkout@v4
               with:
-                  ref: source #检出source分支的代码
+                  ref: main #检出source分支的代码
 
             - name: 安装 Node
               uses: actions/setup-node@v4
