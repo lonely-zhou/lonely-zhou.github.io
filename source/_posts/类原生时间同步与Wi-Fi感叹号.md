@@ -1,11 +1,11 @@
 ---
 title: 类原生时间同步与Wi-Fi感叹号
-date: 2026-01-29 18:59:29
-tags: 
-    - 安卓
-    - lineageos
+tags:
+  - 安卓
+  - lineageos
 categories: 安卓
-abbrlink:
+abbrlink: b2adfa
+date: 2026-01-29 18:59:29
 ---
 
 时间同步
