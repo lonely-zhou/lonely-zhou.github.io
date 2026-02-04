@@ -1,6 +1,7 @@
 ---
 title: Rime 输入法
 date: 2024/11/07
+categories: win
 tags:
   - 输入法
 abbrlink: 7df1138c

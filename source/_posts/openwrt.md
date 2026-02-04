@@ -2,6 +2,7 @@
 title: openwrt
 date: 2024/11/07
 abbrlink: 7a44463a
+categories: 路由器
 ---
 
 ## 换源

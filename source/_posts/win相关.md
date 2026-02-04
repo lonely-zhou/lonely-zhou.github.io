@@ -2,6 +2,7 @@
 title: win相关
 date: 2024/11/07
 abbrlink: a802f1a7
+categories: win
 ---
 
 ## winget 彩虹进度条
@@ -34,7 +35,7 @@ Host *
     ServerAliveInterval 40
 
 # 别名登录
-Host txy
+Host name
     HostName ip
     User root
   	Port 22
