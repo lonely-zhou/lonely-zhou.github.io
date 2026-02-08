@@ -122,7 +122,7 @@ aside:
             img: https://img.dzho.cn/img/m1000x1000.JPEG # url
             sticker: # url, 24x24 size
         # 介绍 / Introduction
-        description: 世上本无事，庸人自扰之 / There is nothing in the world, and the trouble is self-inflicted.
+        description: 世上本无事，庸人自扰之
         # 内容 / Content
         content: # 这是我的博客 / This is my Blog
         state:
@@ -135,6 +135,7 @@ aside:
             - 你可以的
             - 你一定可以的
             - 祝你好运，陌生人
+            - 生活不止眼前的苟且，还有诗和远方
         # social
         # 社交信息图标
         information:
