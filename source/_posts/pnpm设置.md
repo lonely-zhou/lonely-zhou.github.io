@@ -6,9 +6,12 @@ categories:
 abbrlink:
 ---
 ```shell
-pnpm config set store-dir xxx\pnpm_data
-pnpm config set store-dir xxx\pnpm_data\.pnpm-store
-pnpm config set global-bin-dir xxx\pnpm_data\pnpm-bin
-pnpm config set cache-dir xxx\pnpm_data\pnpm-cache
+pnpm config set store-dir C:\Users\dzhou\Documents\Resource\pnpm_data
+pnpm config set store-dir C:\Users\dzhou\Documents\Resource\pnpm_data\.pnpm-store
+pnpm config set global-bin-dir C:\Users\dzhou\Documents\Resource\pnpm_data\pnpm-bin
+pnpm config set cache-dir C:\Users\dzhou\Documents\Resource\pnpm_data\pnpm-cache
+# 国内源
+pnpm config set registry https://registry.npmmirror.com
+
 pnpm config list
 ```
