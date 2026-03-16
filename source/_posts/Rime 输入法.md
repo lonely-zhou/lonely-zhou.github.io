@@ -1,6 +1,6 @@
 ---
 title: Rime 输入法
-date: 2024/11/07
+date: 2024-11-07 11:29:53
 categories: win
 tags:
   - 输入法
@@ -9,7 +9,7 @@ abbrlink: 7df1138c
 
 [RIME | 中州韻輸入法引擎](https://rime.im/)
 
-## 白霜词库
+## [白霜词库](https://github.com/zjralhf/rime--)
 
 ```shell
 # rime 用户文件夹

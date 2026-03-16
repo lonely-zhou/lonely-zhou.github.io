@@ -19,6 +19,7 @@ adb shell settings put global captive_portal_http_url http://connect.rom.miui.co
 ```
 ## 常用软件
  - [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid/releases)
+ - [FlClash](https://github.com/chen08209/FlClash)
  - [apatch](https://apatch.dev/zh_CN/install.html)
  - [AdGuard Home For Android](https://github.com/liuzq2002/Adguard-Home-For-Magisk-Mod/releases)
  - PUI Theme
