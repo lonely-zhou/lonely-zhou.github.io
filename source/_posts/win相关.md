@@ -1,6 +1,6 @@
 ---
 title: win相关
-date: 2024/11/07
+date: 2024-11-07 16:34:58
 abbrlink: a802f1a7
 categories: win
 ---
@@ -40,4 +40,12 @@ Host name
     User root
   	Port 22
     IdentityFile ~/.ssh/OpenCloudOS.pem
+```
+## 隐藏设置主页
+
+```shell
+regedit
+计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer
+键: SettingsPageVisibility
+值: hide:home
 ```
