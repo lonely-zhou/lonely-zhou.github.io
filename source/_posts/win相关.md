@@ -40,6 +40,11 @@ Host name
     User root
   	Port 22
     IdentityFile ~/.ssh/OpenCloudOS.pem
+
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/GitHub
 ```
 ## 隐藏设置主页
 
