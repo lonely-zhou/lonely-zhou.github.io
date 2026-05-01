@@ -44,3 +44,12 @@ adb reboot bootloader
 fastboot flash boot PATH/TO/boot.img
 fastboot reboot
 ```
+
+## 解锁bl
+```shell
+adb reboot bootloader
+fastboot flashing unlock 
+```
+
+## 橙狐
+`fastboot boot xxx.img`
