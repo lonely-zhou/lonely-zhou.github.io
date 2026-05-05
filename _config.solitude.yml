@@ -536,7 +536,7 @@ footer:
     # 备案
     beian:
         - name: 提供加速服务
-          icon: /img/又拍云_logo4.png
+          icon: /img/upyun_logo4.png
           url: https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral
         - name: 京公网安备11010702002953号
           icon: https://beian.mps.gov.cn/img/logo01.dd7ff50e.png
