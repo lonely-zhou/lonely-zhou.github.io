@@ -58,3 +58,15 @@ git remote add <别名> <远程仓库URL>
 ```shell
 git push -u origin main
 ```
+
+## 撤销提交
+```shell
+# 撤销上一次提交
+git revert HEAD
+
+# 撤销指定的提交
+git revert <commit-hash>
+
+# 推送到远程
+git push origin <branch-name>
+```
