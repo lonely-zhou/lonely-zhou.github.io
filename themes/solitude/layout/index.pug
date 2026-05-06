@@ -45,3 +45,6 @@ mixin homeContent()
 block content
   +homeTop()
   +homeContent()
+
+if theme.ascii_fu.enable
+  include ./includes/widgets/sentence.pug
