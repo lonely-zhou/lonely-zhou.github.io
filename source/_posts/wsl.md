@@ -1,0 +1,57 @@
+---
+title: wsl子系统
+tags:
+    - win
+    - wsl
+categories: win
+abbrlink:
+date: 2026-05-09 20:16:01
+---
+
+## 家庭版开启hyperv
+```shell
+@echo off
+chcp 65001 >nul
+:: 检查管理员权限
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo 请以管理员身份运行此脚本
+    pause
+    exit /b 1
+)
+
+pushd "%~dp0"
+
+:: 添加 Hyper-V 包
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt 2>nul
+if %errorlevel% equ 0 (
+    for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do (
+        echo 正在添加: %%i
+        dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+        if !errorlevel! neq 0 echo 警告: %%i 添加失败
+    )
+    del hyper-v.txt
+) else (
+    echo 未找到 Hyper-V 包文件
+)
+
+:: 启用 Hyper-V 功能
+echo 正在启用 Hyper-V 功能...
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
+
+echo Hyper-V 安装完成，建议重启计算机
+pause
+```
+
+## 安装wsl子系统
+```shell
+wsl --install
+# 启用 wsl2
+wsl --set-default-version 2
+```
+
+## 其他
+```shell
+# 自动创建 .ssh 文件夹
+ssh -T git@github.com
+```
