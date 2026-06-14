@@ -45,9 +45,14 @@ pause
 
 ## 安装wsl子系统
 ```shell
+# 默认安装Ubuntu
 wsl --install
+# 指定安装
+wsl --install -d Debian
 # 启用 wsl2
 wsl --set-default-version 2
+# 卸载
+wsl --unregister Ubuntu
 ```
 
 ## 其他
