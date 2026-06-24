@@ -8,7 +8,7 @@ abbrlink:
 date: 2026-05-09 20:16:01
 ---
 
-## 家庭版开启hyperv
+## 家庭版开启hyperv(wsl非必须)
 ```shell
 @echo off
 chcp 65001 >nul
@@ -59,4 +59,6 @@ wsl --unregister Ubuntu
 ```shell
 # 自动创建 .ssh 文件夹
 ssh -T git@github.com
+# Permissions 0777 for '.ssh/GitHub' are too open.
+chmod 600 .ssh/GitHub
 ```
