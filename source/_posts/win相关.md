@@ -54,3 +54,9 @@ regedit
 键: SettingsPageVisibility
 值: hide:home
 ```
+## 本地账户激活
+
+```shell
+# shift + F10
+start ms-cxh:localonly
+```
