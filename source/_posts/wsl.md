@@ -84,3 +84,59 @@ default=arch
 # 安装ssh
 sudo pacman -S openssh
 ```
+
+## .bashrc
+```shell
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+#alias ls='ls --color=auto'
+#alias grep='grep --color=auto'
+#PS1='[\u@\h \W]\$ '
+
+# 自定义配置
+# 颜色定义
+COLOR_RESET='\[\033[0m\]'
+COLOR_USER='\[\033[01;32m\]'    # 绿色 - 用户名
+COLOR_HOST='\[\033[01;34m\]'    # 蓝色 - 主机名
+COLOR_PATH='\[\033[01;33m\]'    # 黄色 - 路径
+COLOR_GIT='\[\033[01;36m\]'     # 青色 - Git 分支
+COLOR_PROMPT='\[\033[01;37m\]'  # 白色 - 提示符
+COLOR_TIME='\[\033[00;35m\]'    # 紫色 - 时间
+
+# ---------- Git 分支显示函数 ----------
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+parse_git_dirty() {
+    local git_status=$(git status --porcelain 2> /dev/null)
+    if [ -n "$git_status" ]; then
+        echo " ✗"
+    else
+        echo " ✓"
+    fi
+}
+
+# 单行提示符
+PS1="[${COLOR_USER}\u${COLOR_RESET}@${COLOR_HOST}\h${COLOR_RESET}:${COLOR_PATH}\w${COLOR_RESET}${COLOR_GIT}\$(parse_git_branch)${COLOR_RESET}]\$ "
+
+# ---------- 实用别名 ----------
+# 基础命令增强
+alias ll='ls -alFh --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+alias ls='ls --color=auto'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# 如果上一个命令失败，提示符变红
+export PROMPT_COMMAND='if [ $? -ne 0 ]; then echo -e "\033[01;31m✗ 命令执行失败\033[0m"; fi'
+
+# 补全列表显示颜色
+bind "set colored-stats on"
+```
